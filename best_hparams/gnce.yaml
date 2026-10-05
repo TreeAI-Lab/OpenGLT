@@ -1,0 +1,1617 @@
+{
+  "format_version": 1,
+  "datasets": {
+    "GNCE-SWDF-path": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.2,
+          "ffn_expansion": 4,
+          "lr": 0.0003,
+          "n_layer_basicgnn": 6,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "rwpe_dim": 20,
+          "scheduler": "CosRestart",
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": false,
+          "weight_decay": 0.001
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "divide_input_pna": true,
+          "dropout": 0.1,
+          "ffn_expansion": 4,
+          "lr": 0.001,
+          "n_layer_basicgnn": 5,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "post_layers_pna": 2,
+          "pre_layers_pna": 1,
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "StepLR",
+          "towers_pna": 4,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 1e-06
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "gelu",
+          "attn_dropout": 0.25,
+          "dropout": 0.4,
+          "global_model_type": "Transformer",
+          "head_layers": 1,
+          "hidden_size": 64,
+          "local_gnn_type": "GINE",
+          "lr": 0.0005,
+          "norm_type": "batch_norm",
+          "num_heads": 8,
+          "num_layers": 10,
+          "num_warmup_epochs_choice": 5,
+          "pe_mode": "none",
+          "readout_type": "mean",
+          "scheduler": "cosine_with_warmup",
+          "weight_decay": 0.0
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.05,
+          "ffn_expansion": 4,
+          "gmt_blocks": 1,
+          "gmt_heads": 2,
+          "gmt_k": 16,
+          "gmt_layer_norm": false,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 128,
+          "norm_type": "layer_norm",
+          "res": true,
+          "scheduler": null,
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "weight_decay": 1e-06
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.5,
+          "gnnak_embs_profile": "0,2|add",
+          "gnnak_hidden": 384,
+          "gnnak_hops_dim": 8,
+          "gnnak_mini_layers": 3,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 3,
+          "gnnak_pool": "mean",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s5_b4",
+          "gnnak_subgraph_pattern": "ego1",
+          "gnnak_virtual_node": true,
+          "lr": 0.001,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.001
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0005,
+          "mos_act": "relu",
+          "mos_backbone": "gcn",
+          "mos_dropout": 0.1,
+          "mos_gsl_epsilon": 0.8,
+          "mos_gsl_lambda": 0.1,
+          "mos_gsl_one_by_one": true,
+          "mos_hidden": 256,
+          "mos_layers": 3,
+          "mos_max_n_sub": 2,
+          "mos_max_sub_size": 12,
+          "mos_metric_heads_hidden256": 8,
+          "mos_metric_weighted": true,
+          "mos_norm": "BatchNorm",
+          "mos_output_layers": 2,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "mean",
+          "mos_pretrain_backbone_only": true,
+          "mos_pretrain_epochs_max50": 50,
+          "mos_use_select": false,
+          "scheduler": "ReduceLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.15,
+          "ffn_expansion": 4,
+          "gca_drop_scheme": "degree",
+          "gca_edge_drop_pair": "0.10,0.20",
+          "gca_feature_drop_pair": "0.10,0.20",
+          "gca_p_tau": 0.7,
+          "gca_pretrain_epochs_choice": 100,
+          "gca_pretrain_lr": 0.0001,
+          "gca_pretrain_weight_decay": 1e-05,
+          "gca_temperature": 0.2,
+          "lr": 0.0001,
+          "n_layer_basicgnn": 10,
+          "nhid": 512,
+          "norm_type": "none",
+          "readout_type": "mean",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_virtual_node": false,
+          "weight_decay": 0.001
+        }
+      },
+      "MLP-F": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "prelu",
+          "mlp_dropout": 0.1,
+          "mlp_hidden": 256,
+          "mlp_layers": 2,
+          "mlp_norm_type": "batch_norm",
+          "tabular_lr": 0.0003,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 1e-05
+        }
+      },
+      "MLP-S": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "prelu",
+          "mlp_dropout": 0.1,
+          "mlp_hidden": 256,
+          "mlp_layers": 2,
+          "mlp_norm_type": "batch_norm",
+          "tabular_lr": 0.0003,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 1e-05
+        }
+      },
+      "LGBM": {
+        "source": "recorded",
+        "params": {
+          "lgbm_colsample_bytree": 1.0,
+          "lgbm_learning_rate": 0.1,
+          "lgbm_max_depth": 7,
+          "lgbm_min_child_samples": 20,
+          "lgbm_n_estimators": 500,
+          "lgbm_num_leaves": 63,
+          "lgbm_reg_alpha": 0.001,
+          "lgbm_reg_lambda": 0.01,
+          "lgbm_subsample": 1.0
+        }
+      }
+    },
+    "GNCE-SWDF-star": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.1,
+          "ffn_expansion": 2,
+          "lr": 0.0003,
+          "n_layer_basicgnn": 5,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "attn",
+          "res": false,
+          "rwpe_dim": 16,
+          "scheduler": null,
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "divide_input_pna": false,
+          "dropout": 0.1,
+          "lr": 0.0001,
+          "n_layer_basicgnn": 8,
+          "nhid": 512,
+          "norm_type": "batch_norm",
+          "post_layers_pna": 2,
+          "pre_layers_pna": 2,
+          "readout_type": "mean",
+          "res": false,
+          "rwpe_dim": 32,
+          "scheduler": "StepLR",
+          "towers_pna": 4,
+          "use_ffn": false,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 1e-06
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "attn_dropout": 0.1,
+          "dropout": 0.0,
+          "global_model_type": "Performer",
+          "head_layers": 3,
+          "hidden_size": 128,
+          "local_gnn_type": "GINE",
+          "lr": 0.0003,
+          "norm_type": "batch_norm",
+          "num_heads": 4,
+          "num_layers": 8,
+          "pe_mode": "none",
+          "readout_type": "max",
+          "scheduler": null,
+          "weight_decay": 1e-06
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.15,
+          "gmt_blocks": 2,
+          "gmt_heads": 4,
+          "gmt_k": 16,
+          "gmt_layer_norm": true,
+          "lr": 0.0001,
+          "n_layer_basicgnn": 6,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "res": false,
+          "scheduler": null,
+          "train_eps_gin": true,
+          "use_ffn": false,
+          "use_rwpe": false,
+          "weight_decay": 0.0005
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.3,
+          "gnnak_embs_profile": "0,2|add",
+          "gnnak_hidden": 256,
+          "gnnak_hops_dim": 16,
+          "gnnak_mini_layers": 1,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 3,
+          "gnnak_pool": "add",
+          "gnnak_residual": false,
+          "gnnak_sampling_profile": "shortest_r2_s3_b2",
+          "gnnak_subgraph_pattern": "ego1",
+          "gnnak_virtual_node": true,
+          "lr": 0.0001,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.001
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "mos_act": "relu",
+          "mos_backbone": "gcn",
+          "mos_dropout": 0.1,
+          "mos_gsl_epsilon": 0.8,
+          "mos_gsl_lambda": 0.2,
+          "mos_gsl_one_by_one": true,
+          "mos_hidden": 256,
+          "mos_layers": 2,
+          "mos_max_n_sub": 2,
+          "mos_max_sub_size": 8,
+          "mos_metric_heads_hidden256": 8,
+          "mos_metric_weighted": true,
+          "mos_norm": "BatchNorm",
+          "mos_output_layers": 1,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "mean",
+          "mos_pretrain_backbone_only": true,
+          "mos_pretrain_epochs_max50": 20,
+          "mos_use_select": false,
+          "scheduler": null,
+          "weight_decay": 1e-05
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.05,
+          "gca_drop_scheme": "pr",
+          "gca_edge_drop_pair": "0.20,0.40",
+          "gca_feature_drop_pair": "0.20,0.30",
+          "gca_p_tau": 0.7,
+          "gca_pretrain_epochs_choice": 50,
+          "gca_pretrain_lr": 0.0005,
+          "gca_pretrain_weight_decay": 1e-06,
+          "gca_temperature": 1.0,
+          "lr": 0.001,
+          "n_layer_basicgnn": 8,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "attn",
+          "res": false,
+          "scheduler": "StepLR",
+          "train_eps_gin": false,
+          "use_ffn": false,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "MLP-F": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "relu",
+          "mlp_dropout": 0.1,
+          "mlp_hidden": 64,
+          "mlp_layers": 4,
+          "mlp_norm_type": "none",
+          "tabular_lr": 0.0003,
+          "tabular_scheduler": "ReduceLR",
+          "tabular_weight_decay": 0.0001
+        }
+      },
+      "MLP-S": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "relu",
+          "mlp_dropout": 0.2,
+          "mlp_hidden": 128,
+          "mlp_layers": 4,
+          "mlp_norm_type": "layer_norm",
+          "tabular_lr": 0.001,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 1e-05
+        }
+      },
+      "LGBM": {
+        "source": "recorded",
+        "params": {
+          "lgbm_colsample_bytree": 1.0,
+          "lgbm_learning_rate": 0.1,
+          "lgbm_max_depth": -1,
+          "lgbm_min_child_samples": 20,
+          "lgbm_n_estimators": 800,
+          "lgbm_num_leaves": 63,
+          "lgbm_reg_alpha": 0.0,
+          "lgbm_reg_lambda": 0.01,
+          "lgbm_subsample": 1.0
+        }
+      }
+    },
+    "GNCE-LUBM-path": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.1,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 3,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": true,
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "divide_input_pna": true,
+          "dropout": 0.2,
+          "lr": 0.01,
+          "n_layer_basicgnn": 4,
+          "nhid": 512,
+          "norm_type": "layer_norm",
+          "post_layers_pna": 2,
+          "pre_layers_pna": 1,
+          "readout_type": "max",
+          "res": true,
+          "rwpe_dim": 16,
+          "scheduler": "ReduceLR",
+          "towers_pna": 2,
+          "use_ffn": false,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0005
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "gelu",
+          "attn_dropout": 0.0,
+          "dropout": 0.0,
+          "global_model_type": "Transformer",
+          "head_layers": 2,
+          "hidden_size": 384,
+          "local_gnn_type": "GINE",
+          "lr": 0.0001,
+          "norm_type": "none",
+          "num_heads": 4,
+          "num_layers": 5,
+          "pe_mode": "rwse",
+          "readout_type": "max",
+          "rwpe_dim": 16,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0001
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.4,
+          "ffn_expansion": 4,
+          "gmt_blocks": 1,
+          "gmt_heads": 8,
+          "gmt_k": 8,
+          "gmt_layer_norm": true,
+          "lr": 0.0003,
+          "n_layer_basicgnn": 4,
+          "nhid": 512,
+          "norm_type": "batch_norm",
+          "res": true,
+          "rwpe_dim": 32,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "weight_decay": 0.001
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.0,
+          "gnnak_embs_profile": "0,1|concat",
+          "gnnak_hidden": 128,
+          "gnnak_hops_dim": 32,
+          "gnnak_mini_layers": 1,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 6,
+          "gnnak_pool": "add",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s5_b4",
+          "gnnak_subgraph_pattern": "ego1",
+          "gnnak_virtual_node": true,
+          "lr": 0.0003,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "mos_act": "relu",
+          "mos_backbone": "gcn",
+          "mos_dropout": 0.1,
+          "mos_gsl_epsilon": 0.9,
+          "mos_gsl_lambda": 0.1,
+          "mos_gsl_one_by_one": true,
+          "mos_hidden": 128,
+          "mos_layers": 2,
+          "mos_max_n_sub": 1,
+          "mos_max_sub_size": 8,
+          "mos_metric_heads_hidden128": 8,
+          "mos_metric_weighted": true,
+          "mos_norm": "BatchNorm",
+          "mos_output_layers": 1,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "mean",
+          "mos_pretrain_backbone_only": true,
+          "mos_pretrain_epochs_max50": 20,
+          "mos_use_select": false,
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "gca_drop_scheme": "pr",
+          "gca_edge_drop_pair": "0.10,0.20",
+          "gca_feature_drop_pair": "0.05,0.15",
+          "gca_p_tau": 0.9,
+          "gca_pretrain_epochs_choice": 50,
+          "gca_pretrain_lr": 0.0003,
+          "gca_pretrain_weight_decay": 1e-06,
+          "gca_temperature": 0.5,
+          "lr": 0.01,
+          "n_layer_basicgnn": 2,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "readout_type": "mean",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": false,
+          "use_ffn": false,
+          "use_virtual_node": true,
+          "weight_decay": 0.0005
+        }
+      },
+      "MLP-F": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "relu",
+          "mlp_dropout": 0.0,
+          "mlp_hidden": 128,
+          "mlp_layers": 4,
+          "mlp_norm_type": "layer_norm",
+          "tabular_lr": 0.001,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 1e-05
+        }
+      },
+      "MLP-S": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "relu",
+          "mlp_dropout": 0.0,
+          "mlp_hidden": 128,
+          "mlp_layers": 4,
+          "mlp_norm_type": "layer_norm",
+          "tabular_lr": 0.001,
+          "tabular_scheduler": "ReduceLR",
+          "tabular_weight_decay": 1e-05
+        }
+      },
+      "LGBM": {
+        "source": "recorded",
+        "params": {
+          "lgbm_colsample_bytree": 1.0,
+          "lgbm_learning_rate": 0.1,
+          "lgbm_max_depth": -1,
+          "lgbm_min_child_samples": 10,
+          "lgbm_n_estimators": 500,
+          "lgbm_num_leaves": 63,
+          "lgbm_reg_alpha": 0.0,
+          "lgbm_reg_lambda": 0.001,
+          "lgbm_subsample": 0.8
+        }
+      }
+    },
+    "GNCE-LUBM-star": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.1,
+          "lr": 0.003,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "readout_type": "mean",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": true,
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 0.0005
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "divide_input_pna": true,
+          "dropout": 0.0,
+          "ffn_expansion": 1,
+          "lr": 0.0001,
+          "n_layer_basicgnn": 4,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "post_layers_pna": 1,
+          "pre_layers_pna": 2,
+          "readout_type": "mean",
+          "res": true,
+          "scheduler": "CosRestart",
+          "towers_pna": 4,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "attn_dropout": 0.1,
+          "dropout": 0.0,
+          "global_model_type": "Performer",
+          "head_layers": 2,
+          "hidden_size": 128,
+          "local_gnn_type": "GINE",
+          "lr": 0.001,
+          "norm_type": "batch_norm",
+          "num_heads": 4,
+          "num_layers": 8,
+          "pe_mode": "rwse",
+          "readout_type": "attn",
+          "rwpe_dim": 32,
+          "scheduler": "ReduceLR",
+          "weight_decay": 1e-06
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.2,
+          "gmt_blocks": 1,
+          "gmt_heads": 2,
+          "gmt_k": 8,
+          "gmt_layer_norm": true,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 128,
+          "norm_type": "none",
+          "res": true,
+          "rwpe_dim": 32,
+          "scheduler": "CosRestart",
+          "train_eps_gin": true,
+          "use_ffn": false,
+          "use_rwpe": true,
+          "weight_decay": 0.0005
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.0,
+          "gnnak_embs_profile": "0,1|concat",
+          "gnnak_hidden": 128,
+          "gnnak_hops_dim": 32,
+          "gnnak_mini_layers": 1,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 6,
+          "gnnak_pool": "add",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s5_b4",
+          "gnnak_subgraph_pattern": "ego1",
+          "gnnak_virtual_node": true,
+          "lr": 0.0003,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0005,
+          "mos_act": "relu",
+          "mos_backbone": "gcn",
+          "mos_dropout": 0.1,
+          "mos_gsl_epsilon": 0.9,
+          "mos_gsl_lambda": 0.1,
+          "mos_gsl_one_by_one": true,
+          "mos_hidden": 128,
+          "mos_layers": 2,
+          "mos_max_n_sub": 2,
+          "mos_max_sub_size": 8,
+          "mos_metric_heads_hidden128": 8,
+          "mos_metric_weighted": true,
+          "mos_norm": "BatchNorm",
+          "mos_output_layers": 1,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "mean",
+          "mos_pretrain_backbone_only": true,
+          "mos_pretrain_epochs_max50": 20,
+          "mos_use_select": false,
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.0,
+          "gca_drop_scheme": "evc",
+          "gca_edge_drop_pair": "0.30,0.40",
+          "gca_feature_drop_pair": "0.10,0.20",
+          "gca_p_tau": 0.5,
+          "gca_pretrain_epochs_choice": 0,
+          "gca_pretrain_lr": 0.003,
+          "gca_pretrain_weight_decay": 0.0005,
+          "gca_temperature": 0.5,
+          "lr": 0.0001,
+          "n_layer_basicgnn": 5,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "StepLR",
+          "train_eps_gin": false,
+          "use_ffn": false,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "MLP-F": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "relu",
+          "mlp_dropout": 0.0,
+          "mlp_hidden": 128,
+          "mlp_layers": 4,
+          "mlp_norm_type": "layer_norm",
+          "tabular_lr": 0.001,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 1e-05
+        }
+      },
+      "MLP-S": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "relu",
+          "mlp_dropout": 0.0,
+          "mlp_hidden": 128,
+          "mlp_layers": 4,
+          "mlp_norm_type": "layer_norm",
+          "tabular_lr": 0.001,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 1e-05
+        }
+      },
+      "LGBM": {
+        "source": "recorded",
+        "params": {
+          "lgbm_colsample_bytree": 1.0,
+          "lgbm_learning_rate": 0.1,
+          "lgbm_max_depth": -1,
+          "lgbm_min_child_samples": 20,
+          "lgbm_n_estimators": 800,
+          "lgbm_num_leaves": 63,
+          "lgbm_reg_alpha": 0.01,
+          "lgbm_reg_lambda": 0.1,
+          "lgbm_subsample": 0.8
+        }
+      }
+    },
+    "GNCE-YAGO-path": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.15,
+          "ffn_expansion": 1,
+          "lr": 0.0003,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "max",
+          "res": true,
+          "rwpe_dim": 20,
+          "scheduler": "CosRestart",
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "divide_input_pna": true,
+          "dropout": 0.05,
+          "ffn_expansion": 1,
+          "lr": 0.0003,
+          "n_layer_basicgnn": 6,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "post_layers_pna": 2,
+          "pre_layers_pna": 2,
+          "readout_type": "max",
+          "res": true,
+          "scheduler": "CosRestart",
+          "towers_pna": 4,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "attn_dropout": 0.1,
+          "dropout": 0.05,
+          "global_model_type": "Transformer",
+          "head_layers": 3,
+          "hidden_size": 256,
+          "local_gnn_type": "GINE",
+          "lr": 0.0003,
+          "norm_type": "layer_norm",
+          "num_heads": 2,
+          "num_layers": 5,
+          "num_warmup_epochs_choice": 10,
+          "pe_mode": "rwse",
+          "readout_type": "max",
+          "rwpe_dim": 20,
+          "scheduler": "cosine_with_warmup",
+          "weight_decay": 0.001
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.05,
+          "ffn_expansion": 1,
+          "gmt_blocks": 1,
+          "gmt_heads": 2,
+          "gmt_k": 16,
+          "gmt_layer_norm": false,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 128,
+          "norm_type": "layer_norm",
+          "res": true,
+          "scheduler": null,
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "weight_decay": 0.0005
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.0,
+          "gnnak_embs_profile": "0,1|concat",
+          "gnnak_hidden": 128,
+          "gnnak_hops_dim": 32,
+          "gnnak_mini_layers": 1,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 6,
+          "gnnak_pool": "add",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s5_b4",
+          "gnnak_subgraph_pattern": "ego1",
+          "gnnak_virtual_node": true,
+          "lr": 0.0003,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0005,
+          "mos_act": "relu",
+          "mos_backbone": "gcn",
+          "mos_dropout": 0.1,
+          "mos_gsl_epsilon": 0.8,
+          "mos_gsl_lambda": 0.1,
+          "mos_gsl_one_by_one": true,
+          "mos_hidden": 256,
+          "mos_layers": 3,
+          "mos_max_n_sub": 2,
+          "mos_max_sub_size": 12,
+          "mos_metric_heads_hidden256": 8,
+          "mos_metric_weighted": true,
+          "mos_norm": "LayerNorm",
+          "mos_output_layers": 2,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "mean",
+          "mos_pretrain_backbone_only": true,
+          "mos_pretrain_epochs_max50": 50,
+          "mos_use_select": false,
+          "scheduler": "ReduceLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.15,
+          "ffn_expansion": 1,
+          "gca_drop_scheme": "evc",
+          "gca_edge_drop_pair": "0.00,0.20",
+          "gca_feature_drop_pair": "0.05,0.15",
+          "gca_p_tau": 0.9,
+          "gca_pretrain_epochs_choice": 100,
+          "gca_pretrain_lr": 0.0003,
+          "gca_pretrain_weight_decay": 0.0005,
+          "gca_temperature": 1.0,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "mean",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_virtual_node": false,
+          "weight_decay": 0.001
+        }
+      },
+      "MLP-F": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "relu",
+          "mlp_dropout": 0.0,
+          "mlp_hidden": 128,
+          "mlp_layers": 4,
+          "mlp_norm_type": "layer_norm",
+          "tabular_lr": 0.001,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 1e-05
+        }
+      },
+      "MLP-S": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "relu",
+          "mlp_dropout": 0.2,
+          "mlp_hidden": 128,
+          "mlp_layers": 4,
+          "mlp_norm_type": "layer_norm",
+          "tabular_lr": 0.001,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 1e-05
+        }
+      },
+      "LGBM": {
+        "source": "recorded",
+        "params": {
+          "lgbm_colsample_bytree": 0.8,
+          "lgbm_learning_rate": 0.1,
+          "lgbm_max_depth": -1,
+          "lgbm_min_child_samples": 10,
+          "lgbm_n_estimators": 800,
+          "lgbm_num_leaves": 63,
+          "lgbm_reg_alpha": 0.001,
+          "lgbm_reg_lambda": 0.0,
+          "lgbm_subsample": 0.8
+        }
+      }
+    },
+    "GNCE-YAGO-star": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.15,
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "mean",
+          "res": true,
+          "rwpe_dim": 20,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": false,
+          "use_ffn": false,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 1e-06
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "divide_input_pna": false,
+          "dropout": 0.05,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "post_layers_pna": 1,
+          "pre_layers_pna": 2,
+          "readout_type": "mean",
+          "res": true,
+          "scheduler": "CosRestart",
+          "towers_pna": 4,
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 0.0
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "attn_dropout": 0.0,
+          "dropout": 0.5,
+          "global_model_type": "Transformer",
+          "head_layers": 2,
+          "hidden_size": 128,
+          "local_gnn_type": "GINE",
+          "lr": 0.0005,
+          "norm_type": "batch_norm",
+          "num_heads": 2,
+          "num_layers": 8,
+          "pe_mode": "none",
+          "readout_type": "add",
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "ffn_expansion": 1,
+          "gmt_blocks": 2,
+          "gmt_heads": 2,
+          "gmt_k": 4,
+          "gmt_layer_norm": true,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 8,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "res": true,
+          "scheduler": "StepLR",
+          "train_eps_gin": true,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "weight_decay": 0.0
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.2,
+          "gnnak_embs_profile": "1|add",
+          "gnnak_hidden": 384,
+          "gnnak_hops_dim": 8,
+          "gnnak_mini_layers": 3,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 3,
+          "gnnak_pool": "mean",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r1_s3_b2",
+          "gnnak_subgraph_pattern": "rw10_r5",
+          "gnnak_virtual_node": true,
+          "lr": 0.001,
+          "scheduler": "StepLR",
+          "weight_decay": 0.0005
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "mos_act": "relu",
+          "mos_backbone": "gcn",
+          "mos_dropout": 0.1,
+          "mos_gsl_epsilon": 0.7,
+          "mos_gsl_lambda": 0.2,
+          "mos_gsl_one_by_one": true,
+          "mos_hidden": 256,
+          "mos_layers": 2,
+          "mos_max_n_sub": 2,
+          "mos_max_sub_size": 5,
+          "mos_metric_heads_hidden256": 8,
+          "mos_metric_weighted": true,
+          "mos_norm": "BatchNorm",
+          "mos_output_layers": 1,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "mean",
+          "mos_pretrain_backbone_only": true,
+          "mos_pretrain_epochs_max50": 20,
+          "mos_use_select": false,
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.15,
+          "ffn_expansion": 2,
+          "gca_drop_scheme": "evc",
+          "gca_edge_drop_pair": "0.05,0.15",
+          "gca_feature_drop_pair": "0.05,0.15",
+          "gca_p_tau": 0.9,
+          "gca_pretrain_epochs_choice": 50,
+          "gca_pretrain_lr": 0.0003,
+          "gca_pretrain_weight_decay": 0.0001,
+          "gca_temperature": 1.0,
+          "lr": 0.001,
+          "n_layer_basicgnn": 8,
+          "nhid": 512,
+          "norm_type": "batch_norm",
+          "readout_type": "attn",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "MLP-F": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "prelu",
+          "mlp_dropout": 0.2,
+          "mlp_hidden": 512,
+          "mlp_layers": 4,
+          "mlp_norm_type": "none",
+          "tabular_lr": 0.001,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 0.0
+        }
+      },
+      "MLP-S": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "relu",
+          "mlp_dropout": 0.2,
+          "mlp_hidden": 128,
+          "mlp_layers": 4,
+          "mlp_norm_type": "layer_norm",
+          "tabular_lr": 0.001,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 1e-05
+        }
+      },
+      "LGBM": {
+        "source": "recorded",
+        "params": {
+          "lgbm_colsample_bytree": 1.0,
+          "lgbm_learning_rate": 0.1,
+          "lgbm_max_depth": -1,
+          "lgbm_min_child_samples": 20,
+          "lgbm_n_estimators": 800,
+          "lgbm_num_leaves": 63,
+          "lgbm_reg_alpha": 0.001,
+          "lgbm_reg_lambda": 0.0,
+          "lgbm_subsample": 0.8
+        }
+      }
+    },
+    "GNCE-Wikidata-path": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.15,
+          "ffn_expansion": 1,
+          "lr": 0.0003,
+          "n_layer_basicgnn": 4,
+          "nhid": 512,
+          "norm_type": "batch_norm",
+          "readout_type": "attn",
+          "res": false,
+          "rwpe_dim": 16,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": true,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "divide_input_pna": true,
+          "dropout": 0.05,
+          "ffn_expansion": 1,
+          "lr": 0.0003,
+          "n_layer_basicgnn": 6,
+          "nhid": 128,
+          "norm_type": "none",
+          "post_layers_pna": 2,
+          "pre_layers_pna": 2,
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "CosRestart",
+          "towers_pna": 2,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "attn_dropout": 0.5,
+          "dropout": 0.05,
+          "global_model_type": "Performer",
+          "head_layers": 3,
+          "hidden_size": 128,
+          "local_gnn_type": "PNA",
+          "lr": 0.0005,
+          "norm_type": "layer_norm",
+          "num_heads": 8,
+          "num_layers": 5,
+          "pe_mode": "rwse",
+          "readout_type": "mean",
+          "rwpe_dim": 8,
+          "scheduler": null,
+          "weight_decay": 0.0005
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "ffn_expansion": 4,
+          "gmt_blocks": 1,
+          "gmt_heads": 4,
+          "gmt_k": 4,
+          "gmt_layer_norm": true,
+          "lr": 0.0003,
+          "n_layer_basicgnn": 10,
+          "nhid": 128,
+          "norm_type": "none",
+          "res": true,
+          "rwpe_dim": 16,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "weight_decay": 0.001
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.5,
+          "gnnak_embs_profile": "0,2|add",
+          "gnnak_hidden": 384,
+          "gnnak_hops_dim": 8,
+          "gnnak_mini_layers": 3,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 3,
+          "gnnak_pool": "mean",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s5_b4",
+          "gnnak_subgraph_pattern": "ego1",
+          "gnnak_virtual_node": true,
+          "lr": 0.001,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.001
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0003,
+          "mos_act": "relu",
+          "mos_backbone": "gcn",
+          "mos_dropout": 0.3,
+          "mos_gsl_epsilon": 0.9,
+          "mos_gsl_lambda": 0.1,
+          "mos_gsl_one_by_one": true,
+          "mos_hidden": 256,
+          "mos_layers": 3,
+          "mos_max_n_sub": 2,
+          "mos_max_sub_size": 12,
+          "mos_metric_heads_hidden256": 8,
+          "mos_metric_weighted": true,
+          "mos_norm": "LayerNorm",
+          "mos_output_layers": 2,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "mean",
+          "mos_pretrain_backbone_only": true,
+          "mos_pretrain_epochs_max50": 50,
+          "mos_use_select": false,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.3,
+          "ffn_expansion": 4,
+          "gca_drop_scheme": "evc",
+          "gca_edge_drop_pair": "0.00,0.20",
+          "gca_feature_drop_pair": "0.05,0.15",
+          "gca_p_tau": 0.9,
+          "gca_pretrain_epochs_choice": 0,
+          "gca_pretrain_lr": 0.01,
+          "gca_pretrain_weight_decay": 0.0005,
+          "gca_temperature": 0.1,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 512,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0
+        }
+      },
+      "MLP-F": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "relu",
+          "mlp_dropout": 0.0,
+          "mlp_hidden": 128,
+          "mlp_layers": 4,
+          "mlp_norm_type": "layer_norm",
+          "tabular_lr": 0.001,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 1e-05
+        }
+      },
+      "MLP-S": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "prelu",
+          "mlp_dropout": 0.2,
+          "mlp_hidden": 512,
+          "mlp_layers": 4,
+          "mlp_norm_type": "none",
+          "tabular_lr": 0.001,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 0.0
+        }
+      },
+      "LGBM": {
+        "source": "recorded",
+        "params": {
+          "lgbm_colsample_bytree": 0.8,
+          "lgbm_learning_rate": 0.1,
+          "lgbm_max_depth": -1,
+          "lgbm_min_child_samples": 50,
+          "lgbm_n_estimators": 500,
+          "lgbm_num_leaves": 63,
+          "lgbm_reg_alpha": 0.0,
+          "lgbm_reg_lambda": 0.0,
+          "lgbm_subsample": 0.8
+        }
+      }
+    },
+    "GNCE-Wikidata-star": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.2,
+          "ffn_expansion": 2,
+          "lr": 0.01,
+          "n_layer_basicgnn": 10,
+          "nhid": 512,
+          "norm_type": "batch_norm",
+          "readout_type": "mean",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": true,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "divide_input_pna": true,
+          "dropout": 0.15,
+          "ffn_expansion": 4,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "post_layers_pna": 1,
+          "pre_layers_pna": 1,
+          "readout_type": "mean",
+          "res": true,
+          "scheduler": "StepLR",
+          "towers_pna": 1,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "gelu",
+          "attn_dropout": 0.1,
+          "dropout": 0.05,
+          "global_model_type": "Transformer",
+          "head_layers": 1,
+          "hidden_size": 128,
+          "local_gnn_type": "GINE",
+          "lr": 0.0005,
+          "norm_type": "batch_norm",
+          "num_heads": 8,
+          "num_layers": 5,
+          "pe_mode": "none",
+          "readout_type": "max",
+          "scheduler": "CosRestart",
+          "weight_decay": 1e-05
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.4,
+          "gmt_blocks": 1,
+          "gmt_heads": 2,
+          "gmt_k": 8,
+          "gmt_layer_norm": false,
+          "lr": 0.0003,
+          "n_layer_basicgnn": 4,
+          "nhid": 512,
+          "norm_type": "batch_norm",
+          "res": true,
+          "rwpe_dim": 16,
+          "scheduler": null,
+          "train_eps_gin": true,
+          "use_ffn": false,
+          "use_rwpe": true,
+          "weight_decay": 1e-06
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.05,
+          "gnnak_embs_profile": "0,2|add",
+          "gnnak_hidden": 384,
+          "gnnak_hops_dim": 8,
+          "gnnak_mini_layers": 3,
+          "gnnak_mlp_layers": 2,
+          "gnnak_outer_layers": 3,
+          "gnnak_pool": "mean",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "none",
+          "gnnak_subgraph_pattern": "rw8_r4",
+          "gnnak_virtual_node": false,
+          "lr": 0.003,
+          "scheduler": null,
+          "weight_decay": 0.0005
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0005,
+          "mos_act": "relu",
+          "mos_backbone": "gcn",
+          "mos_dropout": 0.3,
+          "mos_gsl_epsilon": 0.9,
+          "mos_gsl_lambda": 0.1,
+          "mos_gsl_one_by_one": true,
+          "mos_hidden": 256,
+          "mos_layers": 2,
+          "mos_max_n_sub": 2,
+          "mos_max_sub_size": 8,
+          "mos_metric_heads_hidden256": 8,
+          "mos_metric_weighted": true,
+          "mos_norm": "LayerNorm",
+          "mos_output_layers": 2,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "mean",
+          "mos_pretrain_backbone_only": true,
+          "mos_pretrain_epochs_max50": 50,
+          "mos_use_select": false,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.15,
+          "gca_drop_scheme": "degree",
+          "gca_edge_drop_pair": "0.30,0.40",
+          "gca_feature_drop_pair": "0.10,0.30",
+          "gca_p_tau": 0.7,
+          "gca_pretrain_epochs_choice": 20,
+          "gca_pretrain_lr": 0.003,
+          "gca_pretrain_weight_decay": 0.0,
+          "gca_temperature": 0.2,
+          "lr": 0.003,
+          "n_layer_basicgnn": 10,
+          "nhid": 512,
+          "norm_type": "layer_norm",
+          "readout_type": "max",
+          "res": true,
+          "scheduler": null,
+          "train_eps_gin": true,
+          "use_ffn": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.001
+        }
+      },
+      "MLP-F": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "relu",
+          "mlp_dropout": 0.3,
+          "mlp_hidden": 256,
+          "mlp_layers": 3,
+          "mlp_norm_type": "none",
+          "tabular_lr": 0.003,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 1e-06
+        }
+      },
+      "MLP-S": {
+        "source": "recorded",
+        "params": {
+          "mlp_act_type": "prelu",
+          "mlp_dropout": 0.2,
+          "mlp_hidden": 512,
+          "mlp_layers": 3,
+          "mlp_norm_type": "none",
+          "tabular_lr": 0.003,
+          "tabular_scheduler": null,
+          "tabular_weight_decay": 0.0
+        }
+      },
+      "LGBM": {
+        "source": "recorded",
+        "params": {
+          "lgbm_colsample_bytree": 0.8,
+          "lgbm_learning_rate": 0.1,
+          "lgbm_max_depth": -1,
+          "lgbm_min_child_samples": 20,
+          "lgbm_n_estimators": 800,
+          "lgbm_num_leaves": 63,
+          "lgbm_reg_alpha": 0.0,
+          "lgbm_reg_lambda": 0.1,
+          "lgbm_subsample": 0.8
+        }
+      }
+    }
+  }
+}

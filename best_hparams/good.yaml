@@ -1,0 +1,1116 @@
+{
+  "format_version": 1,
+  "datasets": {
+    "GOOD-HIV::no-shift": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.5,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 3
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "n_layer_basicgnn": 5,
+          "nhid": 256
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "attn_dropout": 0.1,
+          "dropout": 0.15,
+          "global_model_type": "Performer",
+          "head_layers": 3,
+          "hidden_size": 128,
+          "lappe_dim": 32,
+          "lappe_even_heads_dim32": 4,
+          "lappe_layers": 1,
+          "lappe_max_freqs": 4,
+          "lappe_model": "Transformer",
+          "lappe_raw_norm_type": "BatchNorm",
+          "local_gnn_type": "PNA",
+          "lr": 0.0003,
+          "norm_type": "none",
+          "num_heads": 8,
+          "num_layers": 8,
+          "pe_mode": "lappe",
+          "readout_type": "max",
+          "scheduler": "StepLR",
+          "weight_decay": 0.0005
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.0,
+          "gmt_blocks": 1,
+          "gmt_heads": 2,
+          "gmt_k": 8,
+          "gmt_layer_norm": true,
+          "lr": 0.001,
+          "n_layer_basicgnn": 5,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "res": true,
+          "scheduler": "StepLR",
+          "train_eps_gin": true,
+          "weight_decay": 0.001
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.5,
+          "embs_profile": "0,1,2|concat",
+          "hidden": 128,
+          "hops_dim": 16,
+          "lr": 0.001,
+          "mini_layers": 1,
+          "outer_layers": 3,
+          "pool": "mean",
+          "preset": "ak_h128_o3_d05_ego1_concat_lr1e3",
+          "residual": true,
+          "sampling_profile": "none",
+          "scheduler": "StepLR",
+          "subgraph_pattern": "ego1",
+          "virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "backbone": "gcn",
+          "dropout": 0.3,
+          "gsl_epsilon": 0.7,
+          "gsl_lambda": 0.5,
+          "hidden": 256,
+          "layers": 2,
+          "lr": 0.001,
+          "preset": "mo_gcn_h256_l2_d03_e07_l05_pre50_lr1e3",
+          "pretrain_epochs": 50,
+          "scheduler": "StepLR",
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.5,
+          "edge_drop_pair": "0.10,0.20",
+          "feature_drop_pair": "0.10,0.20",
+          "hidden": 256,
+          "layers": 3,
+          "lr": 0.0005,
+          "preset": "gca_h256_l3_d05_pre50_t05_edge0102_lr5e4",
+          "pretrain_epochs": 50,
+          "pretrain_lr": 0.001,
+          "pretrain_weight_decay": 1e-05,
+          "scheduler": "StepLR",
+          "temperature": 0.5,
+          "weight_decay": 0.0
+        }
+      }
+    },
+    "GOOD-HIV::scaffold-covariate": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "lr": 0.001,
+          "n_layer_basicgnn": 5
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "divide_input_pna": true,
+          "dropout": 0.1,
+          "ffn_expansion": 4,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "post_layers_pna": 1,
+          "pre_layers_pna": 2,
+          "readout_type": "max",
+          "res": true,
+          "scheduler": null,
+          "towers_pna": 1,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 0.001
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "gelu",
+          "attn_dropout": 0.5,
+          "dropout": 0.05,
+          "global_model_type": "Performer",
+          "head_layers": 1,
+          "hidden_size": 128,
+          "lappe_dim": 16,
+          "lappe_layers": 3,
+          "lappe_max_freqs": 8,
+          "lappe_model": "DeepSet",
+          "lappe_raw_norm_type": "none",
+          "local_gnn_type": "GINE",
+          "lr": 0.0003,
+          "norm_type": "layer_norm",
+          "num_heads": 4,
+          "num_layers": 8,
+          "num_warmup_epochs_choice": 50,
+          "pe_mode": "lappe",
+          "readout_type": "max",
+          "scheduler": "cosine_with_warmup",
+          "weight_decay": 1e-06
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.0,
+          "gmt_blocks": 1,
+          "gmt_heads": 2,
+          "gmt_k": 8,
+          "gmt_layer_norm": true,
+          "lr": 0.001,
+          "n_layer_basicgnn": 5,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "res": false,
+          "scheduler": "StepLR",
+          "train_eps_gin": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "embs_profile": "0,1,2|add",
+          "hidden": 256,
+          "hops_dim": 16,
+          "lr": 0.0005,
+          "mini_layers": 1,
+          "outer_layers": 3,
+          "pool": "mean",
+          "preset": "ak_h256_o3_d03_ego2_add_lr5e4",
+          "residual": true,
+          "sampling_profile": "none",
+          "scheduler": "StepLR",
+          "subgraph_pattern": "ego2",
+          "virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "backbone": "gcn",
+          "dropout": 0.5,
+          "gsl_epsilon": 0.8,
+          "gsl_lambda": 0.5,
+          "hidden": 128,
+          "layers": 2,
+          "lr": 0.001,
+          "preset": "mo_gcn_h128_l2_d05_e08_l05_pre100_lr1e3",
+          "pretrain_epochs": 100,
+          "scheduler": "StepLR",
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.5,
+          "edge_drop_pair": "0.05,0.15",
+          "feature_drop_pair": "0.10,0.20",
+          "hidden": 128,
+          "layers": 3,
+          "lr": 0.001,
+          "preset": "gca_h128_l3_d05_pre100_t03_edge005015_lr1e3",
+          "pretrain_epochs": 100,
+          "pretrain_lr": 0.0005,
+          "pretrain_weight_decay": 1e-05,
+          "scheduler": "StepLR",
+          "temperature": 0.3,
+          "weight_decay": 0.0
+        }
+      }
+    },
+    "GOOD-HIV::scaffold-concept": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 3
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "divide_input_pna": false,
+          "dropout": 0.05,
+          "ffn_expansion": 4,
+          "lr": 0.001,
+          "n_layer_basicgnn": 3,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "post_layers_pna": 1,
+          "pre_layers_pna": 1,
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "towers_pna": 4,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.001
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "attn_dropout": 0.1,
+          "dropout": 0.1,
+          "global_model_type": "Performer",
+          "head_layers": 1,
+          "hidden_size": 64,
+          "local_gnn_type": "CustomGatedGCN",
+          "lr": 0.0005,
+          "norm_type": "batch_norm",
+          "num_heads": 4,
+          "num_layers": 5,
+          "num_warmup_epochs_choice": 50,
+          "pe_mode": "none",
+          "readout_type": "add",
+          "scheduler": "cosine_with_warmup",
+          "weight_decay": 0.0
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.0,
+          "gmt_blocks": 1,
+          "gmt_heads": 1,
+          "gmt_k": 8,
+          "gmt_layer_norm": false,
+          "lr": 0.001,
+          "n_layer_basicgnn": 6,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "res": true,
+          "scheduler": "StepLR",
+          "train_eps_gin": false,
+          "weight_decay": 0.001
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "embs_profile": "0,1,2|add",
+          "hidden": 256,
+          "hops_dim": 16,
+          "lr": 0.0005,
+          "mini_layers": 1,
+          "outer_layers": 3,
+          "pool": "mean",
+          "preset": "ak_h256_o3_d03_ego2_add_lr5e4",
+          "residual": true,
+          "sampling_profile": "none",
+          "scheduler": "StepLR",
+          "subgraph_pattern": "ego2",
+          "virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "backbone": "gin",
+          "dropout": 0.5,
+          "gsl_epsilon": 0.7,
+          "gsl_lambda": 0.35,
+          "hidden": 256,
+          "layers": 3,
+          "lr": 0.0005,
+          "preset": "mo_gin_h256_l3_d05_e07_l035_pre100_lr5e4",
+          "pretrain_epochs": 100,
+          "scheduler": "StepLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.5,
+          "edge_drop_pair": "0.20,0.30",
+          "feature_drop_pair": "0.10,0.20",
+          "hidden": 256,
+          "layers": 3,
+          "lr": 0.001,
+          "preset": "gca_h256_l3_d05_pre100_t05_edge0203_lr1e3",
+          "pretrain_epochs": 100,
+          "pretrain_lr": 0.001,
+          "pretrain_weight_decay": 1e-05,
+          "scheduler": "StepLR",
+          "temperature": 0.5,
+          "weight_decay": 0.0
+        }
+      }
+    },
+    "GOOD-HIV::size-covariate": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "lr": 0.001,
+          "n_layer_basicgnn": 5
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "divide_input_pna": true,
+          "dropout": 0.0,
+          "ffn_expansion": 1,
+          "lr": 0.0001,
+          "n_layer_basicgnn": 4,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "post_layers_pna": 1,
+          "pre_layers_pna": 2,
+          "readout_type": "mean",
+          "res": true,
+          "scheduler": "CosRestart",
+          "towers_pna": 4,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "attn_dropout": 0.25,
+          "dropout": 0.3,
+          "global_model_type": "Transformer",
+          "head_layers": 1,
+          "hidden_size": 384,
+          "local_gnn_type": "CustomGatedGCN",
+          "lr": 0.0003,
+          "norm_type": "batch_norm",
+          "num_heads": 8,
+          "num_layers": 3,
+          "pe_mode": "rwse",
+          "readout_type": "attn",
+          "rwpe_dim": 16,
+          "scheduler": null,
+          "weight_decay": 0.0001
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.0,
+          "gmt_blocks": 1,
+          "gmt_heads": 1,
+          "gmt_k": 8,
+          "gmt_layer_norm": true,
+          "lr": 0.0003,
+          "n_layer_basicgnn": 5,
+          "nhid": 64,
+          "norm_type": "none",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": true,
+          "weight_decay": 0.001
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "embs_profile": "0,1,2|concat",
+          "hidden": 128,
+          "hops_dim": 16,
+          "lr": 0.001,
+          "mini_layers": 1,
+          "outer_layers": 4,
+          "pool": "mean",
+          "preset": "ak_h128_o4_d03_ego2_concat_lr1e3",
+          "residual": true,
+          "sampling_profile": "none",
+          "scheduler": "StepLR",
+          "subgraph_pattern": "ego2",
+          "virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "backbone": "gcn",
+          "dropout": 0.3,
+          "gsl_epsilon": 0.7,
+          "gsl_lambda": 0.5,
+          "hidden": 256,
+          "layers": 2,
+          "lr": 0.001,
+          "preset": "mo_gcn_h256_l2_d03_e07_l05_pre50_lr1e3",
+          "pretrain_epochs": 50,
+          "scheduler": "StepLR",
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.5,
+          "edge_drop_pair": "0.20,0.30",
+          "feature_drop_pair": "0.10,0.20",
+          "hidden": 256,
+          "layers": 3,
+          "lr": 0.001,
+          "preset": "gca_h256_l3_d05_pre100_t05_edge0203_lr1e3",
+          "pretrain_epochs": 100,
+          "pretrain_lr": 0.001,
+          "pretrain_weight_decay": 1e-05,
+          "scheduler": "StepLR",
+          "temperature": 0.5,
+          "weight_decay": 0.0
+        }
+      }
+    },
+    "GOOD-HIV::size-concept": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 3
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "divide_input_pna": true,
+          "dropout": 0.4,
+          "ffn_expansion": 2,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 6,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "post_layers_pna": 1,
+          "pre_layers_pna": 1,
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": null,
+          "towers_pna": 4,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.0001
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "attn_dropout": 0.25,
+          "dropout": 0.5,
+          "global_model_type": "Performer",
+          "head_layers": 3,
+          "hidden_size": 128,
+          "lappe_dim": 8,
+          "lappe_layers": 3,
+          "lappe_max_freqs": 16,
+          "lappe_model": "DeepSet",
+          "lappe_raw_norm_type": "none",
+          "local_gnn_type": "CustomGatedGCN",
+          "lr": 0.001,
+          "norm_type": "layer_norm",
+          "num_heads": 8,
+          "num_layers": 5,
+          "num_warmup_epochs_choice": 1,
+          "pe_mode": "lappe_rwse",
+          "readout_type": "add",
+          "rwpe_dim": 20,
+          "scheduler": "cosine_with_warmup",
+          "weight_decay": 1e-06
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.5,
+          "gmt_blocks": 2,
+          "gmt_heads": 4,
+          "gmt_k": 16,
+          "gmt_layer_norm": true,
+          "lr": 0.0003,
+          "n_layer_basicgnn": 3,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "embs_profile": "0,1,2|add",
+          "hidden": 256,
+          "hops_dim": 16,
+          "lr": 0.0005,
+          "mini_layers": 1,
+          "outer_layers": 3,
+          "pool": "mean",
+          "preset": "ak_h256_o3_d03_ego2_add_lr5e4",
+          "residual": true,
+          "sampling_profile": "none",
+          "scheduler": "StepLR",
+          "subgraph_pattern": "ego2",
+          "virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "backbone": "gin",
+          "dropout": 0.5,
+          "gsl_epsilon": 0.8,
+          "gsl_lambda": 0.35,
+          "hidden": 128,
+          "layers": 3,
+          "lr": 0.0005,
+          "preset": "mo_gin_h128_l3_d05_e08_l035_pre100_lr5e4",
+          "pretrain_epochs": 100,
+          "scheduler": "StepLR",
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.5,
+          "edge_drop_pair": "0.20,0.30",
+          "feature_drop_pair": "0.10,0.20",
+          "hidden": 256,
+          "layers": 3,
+          "lr": 0.001,
+          "preset": "gca_h256_l3_d05_pre100_t05_edge0203_lr1e3",
+          "pretrain_epochs": 100,
+          "pretrain_lr": 0.001,
+          "pretrain_weight_decay": 1e-05,
+          "scheduler": "StepLR",
+          "temperature": 0.5,
+          "weight_decay": 0.0
+        }
+      }
+    },
+    "GOOD-ZINC::no-shift": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "lr": 0.001,
+          "n_layer_basicgnn": 5
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "n_layer_basicgnn": 5,
+          "nhid": 256
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "attn_dropout": 0.1,
+          "dropout": 0.1,
+          "global_model": "Transformer",
+          "hidden": 256,
+          "layers": 5,
+          "local_gnn": "GINE",
+          "lr": 0.0003,
+          "num_heads": 4,
+          "pe_mode": "lappe",
+          "preset": "gps_h256_l5_d01_lr3e4_lappe",
+          "readout": "mean",
+          "scheduler": "StepLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "gmt_k": 4,
+          "lr": 0.001
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.0,
+          "gnnak_embs_profile": "0,2|add",
+          "gnnak_hidden": 256,
+          "gnnak_mini_layers": 2,
+          "gnnak_outer_layers": 5,
+          "gnnak_pool": "max",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s3_b2",
+          "gnnak_subgraph_pattern": "ego2",
+          "gnnak_virtual_node": true,
+          "lr": 0.0001,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.001
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "backbone": "gcn",
+          "dropout": 0.3,
+          "gsl_epsilon": 0.7,
+          "gsl_lambda": 0.5,
+          "hidden": 256,
+          "layers": 2,
+          "lr": 0.001,
+          "preset": "mo_gcn_h256_l2_d03_e07_l05_pre50_lr1e3",
+          "pretrain_epochs": 50,
+          "scheduler": "StepLR",
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "edge_drop_pair": "0.10,0.20",
+          "feature_drop_pair": "0.10,0.20",
+          "hidden": 128,
+          "layers": 5,
+          "lr": 0.001,
+          "preset": "gca_h128_l5_d03_pre50_t02_edge0102_lr1e3",
+          "pretrain_epochs": 50,
+          "pretrain_lr": 0.001,
+          "pretrain_weight_decay": 1e-05,
+          "scheduler": "StepLR",
+          "temperature": 0.2,
+          "weight_decay": 0.0
+        }
+      }
+    },
+    "GOOD-ZINC::scaffold-covariate": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 3
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "n_layer_basicgnn": 5,
+          "nhid": 256
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "attn_dropout": 0.1,
+          "dropout": 0.1,
+          "global_model": "Transformer",
+          "hidden": 256,
+          "layers": 5,
+          "local_gnn": "GINE",
+          "lr": 0.0003,
+          "num_heads": 4,
+          "pe_mode": "lappe",
+          "preset": "gps_h256_l5_d01_lr3e4_lappe",
+          "readout": "mean",
+          "scheduler": "StepLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "gmt_k": 4,
+          "lr": 0.0005
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.0,
+          "gnnak_embs_profile": "0,2|add",
+          "gnnak_hidden": 256,
+          "gnnak_mini_layers": 2,
+          "gnnak_outer_layers": 5,
+          "gnnak_pool": "max",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s3_b2",
+          "gnnak_subgraph_pattern": "ego2",
+          "gnnak_virtual_node": true,
+          "lr": 0.0001,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.001
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "backbone": "gcn",
+          "dropout": 0.3,
+          "gsl_epsilon": 0.7,
+          "gsl_lambda": 0.5,
+          "hidden": 256,
+          "layers": 2,
+          "lr": 0.001,
+          "preset": "mo_gcn_h256_l2_d03_e07_l05_pre50_lr1e3",
+          "pretrain_epochs": 50,
+          "scheduler": "StepLR",
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "edge_drop_pair": "0.10,0.20",
+          "feature_drop_pair": "0.10,0.20",
+          "hidden": 128,
+          "layers": 5,
+          "lr": 0.001,
+          "preset": "gca_h128_l5_d03_pre50_t02_edge0102_lr1e3",
+          "pretrain_epochs": 50,
+          "pretrain_lr": 0.001,
+          "pretrain_weight_decay": 1e-05,
+          "scheduler": "StepLR",
+          "temperature": 0.2,
+          "weight_decay": 0.0
+        }
+      }
+    },
+    "GOOD-ZINC::scaffold-concept": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "lr": 0.001,
+          "n_layer_basicgnn": 3
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "n_layer_basicgnn": 3,
+          "nhid": 256
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "attn_dropout": 0.1,
+          "dropout": 0.1,
+          "global_model": "Transformer",
+          "hidden": 256,
+          "layers": 5,
+          "local_gnn": "GINE",
+          "lr": 0.0003,
+          "num_heads": 4,
+          "pe_mode": "lappe",
+          "preset": "gps_h256_l5_d01_lr3e4_lappe",
+          "readout": "mean",
+          "scheduler": "StepLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "gmt_k": 4,
+          "lr": 0.001
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.0,
+          "gnnak_embs_profile": "0,2|add",
+          "gnnak_hidden": 256,
+          "gnnak_mini_layers": 2,
+          "gnnak_outer_layers": 5,
+          "gnnak_pool": "max",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s3_b2",
+          "gnnak_subgraph_pattern": "ego2",
+          "gnnak_virtual_node": true,
+          "lr": 0.0001,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.001
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "backbone": "gcn",
+          "dropout": 0.3,
+          "gsl_epsilon": 0.7,
+          "gsl_lambda": 0.5,
+          "hidden": 256,
+          "layers": 2,
+          "lr": 0.001,
+          "preset": "mo_gcn_h256_l2_d03_e07_l05_pre50_lr1e3",
+          "pretrain_epochs": 50,
+          "scheduler": "StepLR",
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "edge_drop_pair": "0.10,0.20",
+          "feature_drop_pair": "0.10,0.20",
+          "hidden": 128,
+          "layers": 5,
+          "lr": 0.001,
+          "preset": "gca_h128_l5_d03_pre50_t02_edge0102_lr1e3",
+          "pretrain_epochs": 50,
+          "pretrain_lr": 0.001,
+          "pretrain_weight_decay": 1e-05,
+          "scheduler": "StepLR",
+          "temperature": 0.2,
+          "weight_decay": 0.0
+        }
+      }
+    },
+    "GOOD-ZINC::size-covariate": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "lr": 0.001,
+          "n_layer_basicgnn": 5
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "n_layer_basicgnn": 5,
+          "nhid": 256
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "attn_dropout": 0.1,
+          "dropout": 0.1,
+          "global_model": "Transformer",
+          "hidden": 256,
+          "layers": 5,
+          "local_gnn": "GINE",
+          "lr": 0.0003,
+          "num_heads": 4,
+          "pe_mode": "lappe",
+          "preset": "gps_h256_l5_d01_lr3e4_lappe",
+          "readout": "mean",
+          "scheduler": "StepLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "gmt_k": 4,
+          "lr": 0.001
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.1,
+          "gnnak_embs_profile": "0,1,2|add",
+          "gnnak_hidden": 128,
+          "gnnak_mini_layers": 3,
+          "gnnak_outer_layers": 3,
+          "gnnak_pool": "add",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s3_b2",
+          "gnnak_subgraph_pattern": "ego1",
+          "gnnak_virtual_node": true,
+          "lr": 0.0003,
+          "scheduler": "StepLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "backbone": "gcn",
+          "dropout": 0.3,
+          "gsl_epsilon": 0.7,
+          "gsl_lambda": 0.5,
+          "hidden": 256,
+          "layers": 2,
+          "lr": 0.001,
+          "preset": "mo_gcn_h256_l2_d03_e07_l05_pre50_lr1e3",
+          "pretrain_epochs": 50,
+          "scheduler": "StepLR",
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.5,
+          "edge_drop_pair": "0.20,0.30",
+          "feature_drop_pair": "0.10,0.20",
+          "hidden": 256,
+          "layers": 3,
+          "lr": 0.001,
+          "preset": "gca_h256_l3_d05_pre100_t05_edge0203_lr1e3",
+          "pretrain_epochs": 100,
+          "pretrain_lr": 0.001,
+          "pretrain_weight_decay": 1e-05,
+          "scheduler": "StepLR",
+          "temperature": 0.5,
+          "weight_decay": 0.0
+        }
+      }
+    },
+    "GOOD-ZINC::size-concept": {
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "lr": 0.001,
+          "n_layer_basicgnn": 3
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "n_layer_basicgnn": 5,
+          "nhid": 256
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "attn_dropout": 0.1,
+          "dropout": 0.1,
+          "global_model": "Transformer",
+          "hidden": 256,
+          "layers": 5,
+          "local_gnn": "GINE",
+          "lr": 0.0003,
+          "num_heads": 4,
+          "pe_mode": "lappe",
+          "preset": "gps_h256_l5_d01_lr3e4_lappe",
+          "readout": "mean",
+          "scheduler": "StepLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "gmt_k": 4,
+          "lr": 0.0005
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.0,
+          "gnnak_embs_profile": "0,2|add",
+          "gnnak_hidden": 256,
+          "gnnak_mini_layers": 2,
+          "gnnak_outer_layers": 5,
+          "gnnak_pool": "max",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s3_b2",
+          "gnnak_subgraph_pattern": "ego2",
+          "gnnak_virtual_node": true,
+          "lr": 0.0001,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.001
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "backbone": "gcn",
+          "dropout": 0.3,
+          "gsl_epsilon": 0.7,
+          "gsl_lambda": 0.5,
+          "hidden": 256,
+          "layers": 2,
+          "lr": 0.001,
+          "preset": "mo_gcn_h256_l2_d03_e07_l05_pre50_lr1e3",
+          "pretrain_epochs": 50,
+          "scheduler": "StepLR",
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "dropout": 0.3,
+          "edge_drop_pair": "0.20,0.30",
+          "feature_drop_pair": "0.10,0.20",
+          "hidden": 256,
+          "layers": 5,
+          "lr": 0.0005,
+          "preset": "gca_h256_l5_d03_pre100_t02_edge0203_lr5e4",
+          "pretrain_epochs": 100,
+          "pretrain_lr": 0.0005,
+          "pretrain_weight_decay": 1e-05,
+          "scheduler": "StepLR",
+          "temperature": 0.2,
+          "weight_decay": 1e-05
+        }
+      }
+    }
+  }
+}

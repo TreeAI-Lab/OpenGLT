@@ -1,0 +1,3637 @@
+{
+  "format_version": 1,
+  "datasets": {
+    "NCI1": {
+      "GCN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.2,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 8,
+          "nhid": 512,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "CosRestart",
+          "use_virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "GCNPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.0,
+          "ffn_expansion": 2,
+          "lr": 0.0003,
+          "n_layer_basicgnn": 5,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "readout_type": "attn",
+          "res": false,
+          "rwpe_dim": 20,
+          "scheduler": null,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": false,
+          "weight_decay": 0.0005
+        }
+      },
+      "GIN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.1,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 8,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "StepLR",
+          "train_eps_gin": true,
+          "use_virtual_node": false,
+          "weight_decay": 0.001
+        }
+      },
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.0,
+          "ffn_expansion": 1,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 4,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": false,
+          "rwpe_dim": 32,
+          "scheduler": "CosRestart",
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": false,
+          "weight_decay": 0.001
+        }
+      },
+      "SAGE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "aggr_sage": "sum",
+          "dropout": 0.1,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "readout_type": "max",
+          "res": true,
+          "scheduler": null,
+          "use_virtual_node": true,
+          "weight_decay": 0.001
+        }
+      },
+      "SAGEPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "aggr_sage": "sum",
+          "dropout": 0.15,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 5,
+          "nhid": 512,
+          "norm_type": "none",
+          "readout_type": "mean",
+          "res": false,
+          "scheduler": "ReduceLR",
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 0.0005
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "divide_input_pna": false,
+          "dropout": 0.05,
+          "ffn_expansion": 4,
+          "lr": 0.001,
+          "n_layer_basicgnn": 3,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "post_layers_pna": 1,
+          "pre_layers_pna": 1,
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "towers_pna": 4,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.001
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "attn_dropout": 0.5,
+          "dropout": 0.0,
+          "global_model_type": "Performer",
+          "head_layers": 1,
+          "hidden_size": 256,
+          "local_gnn_type": "PNA",
+          "lr": 0.0005,
+          "norm_type": "batch_norm",
+          "num_heads": 2,
+          "num_layers": 10,
+          "pe_mode": "rwse",
+          "readout_type": "max",
+          "rwpe_dim": 32,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0001
+        }
+      },
+      "HGT": {
+        "source": "recorded",
+        "params": {
+          "hubgt_attn_dropout": 0.2,
+          "hubgt_bias_dropout": 0.0,
+          "hubgt_dropout": 0.0,
+          "hubgt_ffn_mult": 3,
+          "hubgt_num_layers": 3,
+          "hubgt_pooling": "sum",
+          "hubgt_width_heads": "128x8",
+          "lr": 0.0003,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0
+        }
+      },
+      "NAG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0005,
+          "nag_attn_dropout": 0.2,
+          "nag_dropout": 0.2,
+          "nag_ffn_mult": 3,
+          "nag_hops": 4,
+          "nag_num_layers": 1,
+          "nag_pooling": "sum",
+          "nag_width_heads": "256x4",
+          "scheduler": null,
+          "weight_decay": 0.001
+        }
+      },
+      "EdgePool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.0,
+          "edgepool_dropout": 0.0,
+          "lr": 0.001,
+          "n_layer_basicgnn": 5,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "num_pool_layers": 2,
+          "pool_readout": "mean",
+          "res": false,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": false,
+          "weight_decay": 1e-06
+        }
+      },
+      "TopkPool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.15,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 512,
+          "norm_type": "batch_norm",
+          "num_pool_layers": 2,
+          "pool_ratio": 0.9,
+          "pool_readout": "mean_max",
+          "res": false,
+          "scheduler": null,
+          "train_eps_gin": false,
+          "weight_decay": 0.0005
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.0,
+          "gmt_blocks": 2,
+          "gmt_heads": 2,
+          "gmt_k": 16,
+          "gmt_layer_norm": false,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 6,
+          "nhid": 256,
+          "norm_type": "none",
+          "res": true,
+          "scheduler": "StepLR",
+          "train_eps_gin": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "HMN": {
+        "source": "recorded",
+        "params": {
+          "hymn_batch_norm": true,
+          "hymn_conv_multiplier": 2,
+          "hymn_dropout": 0.0,
+          "hymn_hidden_size": 256,
+          "hymn_inject_colours": false,
+          "hymn_num_layers": 6,
+          "hymn_pooling": "max",
+          "hymn_predictor_profile": "medium",
+          "hymn_residual": false,
+          "hymn_samples_colours": "2x4",
+          "lr": 0.0003,
+          "scheduler": "CosRestart",
+          "weight_decay": 1e-06
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.5,
+          "gnnak_embs_profile": "0,2|add",
+          "gnnak_hidden": 384,
+          "gnnak_hops_dim": 8,
+          "gnnak_mini_layers": 3,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 3,
+          "gnnak_pool": "mean",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s5_b4",
+          "gnnak_subgraph_pattern": "ego1",
+          "gnnak_virtual_node": true,
+          "lr": 0.001,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.001
+        }
+      },
+      "ECS": {
+        "source": "recorded",
+        "params": {
+          "ecs_dropout": 0.0,
+          "ecs_h": 3,
+          "ecs_max_nodes_per_hop": 30,
+          "ecs_pooling": "max",
+          "ecs_residual": true,
+          "ecs_self_loop": true,
+          "ecs_use_rd": true,
+          "ecs_virtual_node": true,
+          "ecs_width_layers": "256x5",
+          "lr": 0.001,
+          "scheduler": null,
+          "weight_decay": 0.001
+        }
+      },
+      "I2GNN": {
+        "source": "recorded",
+        "params": {
+          "i2_dropout": 0.0,
+          "i2_gate_tu": true,
+          "i2_gnn_type": "gin",
+          "i2_graph_pool_tu": "sum",
+          "i2_h": 4,
+          "i2_hidden": 128,
+          "i2_layers": 4,
+          "i2_max_nodes_per_hop": 16,
+          "i2_node_label": "drnl",
+          "i2_pool_pair_tu": "mean|mean",
+          "i2_residual_tu": true,
+          "i2_use_pooling_nn_tu": true,
+          "i2_use_rd": false,
+          "lr": 0.003,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.001
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.003,
+          "mos_act": "swish",
+          "mos_backbone_tu": "sage",
+          "mos_dropout": 0.2,
+          "mos_gsl_epsilon": 0.7,
+          "mos_gsl_lambda": 0.8,
+          "mos_gsl_one_by_one_default": false,
+          "mos_hidden_default": 64,
+          "mos_layers_default": 4,
+          "mos_max_n_sub_default": 1,
+          "mos_max_sub_size_default": 5,
+          "mos_metric_heads_hidden64": 8,
+          "mos_metric_weighted": true,
+          "mos_norm": "BatchNorm",
+          "mos_output_layers": 1,
+          "mos_parsing_default": "parse_bfs",
+          "mos_pool": "max",
+          "mos_pretrain_backbone_only": true,
+          "mos_pretrain_epochs_max200": 200,
+          "mos_use_motif_tu": false,
+          "mos_use_select_default": false,
+          "scheduler": null,
+          "weight_decay": 1e-06
+        }
+      },
+      "HGP": {
+        "source": "recorded",
+        "params": {
+          "hgpsl_dropout": 0.1,
+          "hgpsl_hidden_size": 64,
+          "hgpsl_lamb": 0.1,
+          "hgpsl_pooling_ratio": 0.8,
+          "hgpsl_structure_profile": "dense_softmax_sl",
+          "lr": 0.003,
+          "scheduler": "StepLR",
+          "weight_decay": 0.0
+        }
+      },
+      "VIB": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "scheduler": null,
+          "vibgsl_backbone": "GIN",
+          "vibgsl_beta": 0.0001,
+          "vibgsl_dropout": 0.3,
+          "vibgsl_feature_denoise": false,
+          "vibgsl_graph_profile": "knn_mlp_k5",
+          "vibgsl_graph_skip_conn": 0.5,
+          "vibgsl_repar": true,
+          "vibgsl_width_profile": "64x32x16",
+          "weight_decay": 0.0005
+        }
+      },
+      "RGC": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.003,
+          "rgc_aux_weight": 0.1,
+          "rgc_backbone": "sage",
+          "rgc_drop_profile": "0.1x0.1",
+          "rgc_num_layers": 2,
+          "rgc_pooling": "mean",
+          "rgc_temperature": 0.1,
+          "rgc_width_profile": "256x64x64x32",
+          "scheduler": "ReduceLR",
+          "weight_decay": 1e-06
+        }
+      },
+      "MVG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0001,
+          "mvgrl_alpha": 0.1,
+          "mvgrl_dropout": 0.1,
+          "mvgrl_width_layers": "256x2",
+          "scheduler": "ReduceLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.1,
+          "gca_drop_scheme_full": "evc",
+          "gca_edge_drop_pair_default": "0.10,0.30",
+          "gca_feature_drop_pair_default": "0.20,0.30",
+          "gca_p_tau": 0.5,
+          "gca_pretrain_epochs_choice": 20,
+          "gca_pretrain_lr": 0.001,
+          "gca_pretrain_weight_decay": 0.0001,
+          "gca_temperature": 0.1,
+          "lr": 0.0003,
+          "n_layer_basicgnn": 8,
+          "nhid": 512,
+          "norm_type": "layer_norm",
+          "readout_type": "max",
+          "res": true,
+          "scheduler": null,
+          "train_eps_gin": true,
+          "use_ffn": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.001
+        }
+      }
+    },
+    "IMDB-BINARY": {
+      "GCN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 128,
+          "norm_type": "layer_norm",
+          "readout_type": "mean",
+          "res": false,
+          "scheduler": null,
+          "use_virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "GCNPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.1,
+          "ffn_expansion": 1,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 5,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "readout_type": "mean",
+          "res": true,
+          "scheduler": "CosRestart",
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.0001
+        }
+      },
+      "GIN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "readout_type": "mean",
+          "res": false,
+          "scheduler": null,
+          "train_eps_gin": true,
+          "use_virtual_node": false,
+          "weight_decay": 0.0001
+        }
+      },
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.1,
+          "ffn_expansion": 1,
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.0001
+        }
+      },
+      "SAGE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "aggr_sage": "mean",
+          "dropout": 0.1,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "mean",
+          "res": false,
+          "scheduler": null,
+          "use_virtual_node": false,
+          "weight_decay": 0.0001
+        }
+      },
+      "SAGEPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "aggr_sage": "max",
+          "dropout": 0.1,
+          "ffn_expansion": 2,
+          "lr": 0.003,
+          "n_layer_basicgnn": 10,
+          "nhid": 128,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": null,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 0.0
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "divide_input_pna": true,
+          "dropout": 0.2,
+          "lr": 0.003,
+          "n_layer_basicgnn": 2,
+          "nhid": 64,
+          "norm_type": "none",
+          "post_layers_pna": 2,
+          "pre_layers_pna": 1,
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": null,
+          "towers_pna": 1,
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "attn_dropout": 0.0,
+          "dropout": 0.1,
+          "global_model_type": "Performer",
+          "head_layers": 3,
+          "hidden_size": 256,
+          "local_gnn_type": "PNA",
+          "lr": 0.001,
+          "norm_type": "layer_norm",
+          "num_heads": 2,
+          "num_layers": 3,
+          "pe_mode": "rwse",
+          "readout_type": "mean",
+          "rwpe_dim": 32,
+          "scheduler": null,
+          "weight_decay": 0.0001
+        }
+      },
+      "HGT": {
+        "source": "recorded",
+        "params": {
+          "hubgt_attn_dropout": 0.05,
+          "hubgt_bias_dropout": 0.0,
+          "hubgt_dropout": 0.0,
+          "hubgt_ffn_mult": 2,
+          "hubgt_num_layers": 5,
+          "hubgt_pooling": "sum",
+          "hubgt_width_heads": "128x8",
+          "lr": 0.003,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0
+        }
+      },
+      "NAG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0005,
+          "nag_attn_dropout": 0.2,
+          "nag_dropout": 0.1,
+          "nag_ffn_mult": 3,
+          "nag_hops": 3,
+          "nag_num_layers": 1,
+          "nag_pooling": "mean",
+          "nag_width_heads": "256x4",
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "EdgePool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "edgepool_dropout": 0.2,
+          "edgepool_num_pool_layers": 1,
+          "edgepool_pool_readout": "mean_max",
+          "lr": 0.003,
+          "n_layer_basicgnn": 10,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "res": false,
+          "scheduler": null,
+          "train_eps_gin": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "TopkPool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.0,
+          "lr": 0.003,
+          "n_layer_basicgnn": 5,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "pool_ratio": 0.8,
+          "res": true,
+          "scheduler": "ReduceLR",
+          "topk_num_pool_layers": 2,
+          "topk_pool_readout": "mean",
+          "train_eps_gin": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.2,
+          "gmt_blocks": 2,
+          "gmt_heads": 8,
+          "gmt_k": 16,
+          "gmt_layer_norm": false,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "res": true,
+          "scheduler": null,
+          "train_eps_gin": true,
+          "weight_decay": 0.0
+        }
+      },
+      "HMN": {
+        "source": "recorded",
+        "params": {
+          "hymn_batch_norm": true,
+          "hymn_conv_multiplier": 4,
+          "hymn_dropout": 0.0,
+          "hymn_hidden_size": 128,
+          "hymn_inject_colours": false,
+          "hymn_num_layers": 3,
+          "hymn_pooling": "max",
+          "hymn_predictor_profile": "medium",
+          "hymn_residual": false,
+          "hymn_samples_colours": "1x2",
+          "lr": 0.003,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.0,
+          "gnnak_embs_profile": "0,1,2|add",
+          "gnnak_hidden": 128,
+          "gnnak_hops_dim": 8,
+          "gnnak_mini_layers": 2,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 3,
+          "gnnak_pool": "max",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s3_b2",
+          "gnnak_subgraph_pattern": "ego2",
+          "gnnak_virtual_node": true,
+          "lr": 0.003,
+          "scheduler": null,
+          "weight_decay": 0.0001
+        }
+      },
+      "ECS": {
+        "source": "recorded",
+        "params": {
+          "ecs_dropout": 0.0,
+          "ecs_h": 3,
+          "ecs_max_nodes_per_hop": 30,
+          "ecs_pooling": "max",
+          "ecs_residual": false,
+          "ecs_self_loop": true,
+          "ecs_use_rd": true,
+          "ecs_virtual_node": true,
+          "ecs_width_layers": "256x3",
+          "lr": 0.003,
+          "scheduler": null,
+          "weight_decay": 0.0001
+        }
+      },
+      "I2GNN": {
+        "source": "recorded",
+        "params": {
+          "i2_dropout": 0.1,
+          "i2_gate_tu": true,
+          "i2_graph_pool_tu": "sum",
+          "i2_h": 3,
+          "i2_hidden": 128,
+          "i2_layers": 4,
+          "i2_max_nodes_per_hop": 32,
+          "i2_node_label": "drnl",
+          "i2_pool_pair_tu": "mean|mean",
+          "i2_residual_tu": true,
+          "i2_use_pooling_nn_tu": true,
+          "i2_use_rd": false,
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        },
+        "train": {
+          "batch_size": 32
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.003,
+          "mos_act": "swish",
+          "mos_backbone": "gin",
+          "mos_dropout": 0.2,
+          "mos_gsl_epsilon": 0.5,
+          "mos_gsl_lambda": 0.5,
+          "mos_gsl_one_by_one": false,
+          "mos_hidden": 256,
+          "mos_layers": 2,
+          "mos_max_n_sub": 3,
+          "mos_max_sub_size": 10,
+          "mos_metric_heads_hidden256": 4,
+          "mos_metric_weighted": true,
+          "mos_motif_k1": 1.0,
+          "mos_motif_loss_weight": 0.1,
+          "mos_motif_per_class": 2,
+          "mos_motif_sim_type": "euclidean_2",
+          "mos_motif_tau": 0.9,
+          "mos_motif_temperature": 1.0,
+          "mos_motif_update_each": 10,
+          "mos_motif_update_min_epoch_e500": 5,
+          "mos_norm": "BatchNorm",
+          "mos_output_layers": 3,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "max",
+          "mos_pretrain_backbone_only": false,
+          "mos_pretrain_epochs_max200": 0,
+          "mos_use_motif_tu": true,
+          "mos_use_select": false,
+          "mos_use_separate_encoder": true,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0
+        }
+      },
+      "HGP": {
+        "source": "recorded",
+        "params": {
+          "hgpsl_dropout": 0.2,
+          "hgpsl_hidden_size": 256,
+          "hgpsl_pooling_ratio": 0.8,
+          "hgpsl_structure_profile": "sample_no_sl",
+          "lr": 0.0005,
+          "scheduler": "ReduceLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "VIB": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0005,
+          "scheduler": "CosRestart",
+          "vibgsl_backbone": "GIN",
+          "vibgsl_beta": 1e-05,
+          "vibgsl_dropout": 0.3,
+          "vibgsl_feature_denoise": false,
+          "vibgsl_graph_profile": "knn_attention_k10",
+          "vibgsl_graph_skip_conn": 0.5,
+          "vibgsl_num_per": 4,
+          "vibgsl_repar": true,
+          "vibgsl_width_profile": "128x32x32",
+          "weight_decay": 0.0
+        }
+      },
+      "RGC": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0005,
+          "rgc_aux_weight": 0.0,
+          "rgc_backbone": "gcn",
+          "rgc_drop_profile": "0.2x0.1",
+          "rgc_num_layers": 4,
+          "rgc_pooling": "max",
+          "rgc_temperature": 0.1,
+          "rgc_width_profile": "256x64x32x16",
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0001
+        }
+      },
+      "MVG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "mvgrl_alpha": 0.3,
+          "mvgrl_dropout": 0.2,
+          "mvgrl_width_layers": "256x2",
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.2,
+          "gca_drop_scheme": "evc",
+          "gca_edge_drop_pair": "0.10,0.30",
+          "gca_feature_drop_pair": "0.00,0.10",
+          "gca_p_tau": 0.5,
+          "gca_pretrain_epochs_choice": 0,
+          "gca_pretrain_lr": 0.001,
+          "gca_pretrain_weight_decay": 0.0,
+          "gca_temperature": 0.1,
+          "lr": 0.003,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "none",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": false,
+          "use_ffn": false,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      }
+    },
+    "IMDB-MULTI": {
+      "GCN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.1,
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "none",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": null,
+          "use_virtual_node": false,
+          "weight_decay": 0.0001
+        }
+      },
+      "GCNPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.2,
+          "ffn_expansion": 4,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "CosRestart",
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.0001
+        }
+      },
+      "GIN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.2,
+          "lr": 0.003,
+          "n_layer_basicgnn": 2,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": false,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.1,
+          "ffn_expansion": 1,
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.0001
+        }
+      },
+      "SAGE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "aggr_sage": "mean",
+          "dropout": 0.1,
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "CosRestart",
+          "use_virtual_node": false,
+          "weight_decay": 0.0001
+        }
+      },
+      "SAGEPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "aggr_sage": "sum",
+          "dropout": 0.2,
+          "ffn_expansion": 4,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": false,
+          "scheduler": null,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "divide_input_pna": true,
+          "dropout": 0.1,
+          "lr": 0.003,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "post_layers_pna": 2,
+          "pre_layers_pna": 2,
+          "readout_type": "sum",
+          "res": true,
+          "rwpe_dim": 16,
+          "scheduler": "ReduceLR",
+          "towers_pna": 2,
+          "use_ffn": false,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "attn_dropout": 0.0,
+          "dropout": 0.0,
+          "global_model_type": "Performer",
+          "head_layers": 3,
+          "hidden_size": 256,
+          "local_gnn_type": "GINE",
+          "lr": 0.003,
+          "norm_type": "none",
+          "num_heads": 2,
+          "num_layers": 3,
+          "pe_mode": "rwse",
+          "readout_type": "mean",
+          "rwpe_dim": 32,
+          "scheduler": null,
+          "weight_decay": 0.0001
+        }
+      },
+      "HGT": {
+        "source": "recorded",
+        "params": {
+          "hubgt_attn_dropout": 0.2,
+          "hubgt_bias_dropout": 0.0,
+          "hubgt_dropout": 0.0,
+          "hubgt_ffn_mult": 2,
+          "hubgt_num_layers": 5,
+          "hubgt_pooling": "sum",
+          "hubgt_width_heads": "128x8",
+          "lr": 0.003,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0001
+        }
+      },
+      "NAG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "nag_attn_dropout": 0.1,
+          "nag_dropout": 0.2,
+          "nag_ffn_mult": 3,
+          "nag_hops": 4,
+          "nag_num_layers": 2,
+          "nag_pooling": "sum",
+          "nag_width_heads": "256x4",
+          "scheduler": "ReduceLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "EdgePool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.2,
+          "edgepool_dropout": 0.0,
+          "edgepool_num_pool_layers": 3,
+          "edgepool_pool_readout": "mean_max",
+          "lr": 0.0005,
+          "n_layer_basicgnn": 2,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "res": false,
+          "scheduler": "CosRestart",
+          "train_eps_gin": true,
+          "weight_decay": 0.0
+        }
+      },
+      "TopkPool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.2,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "pool_ratio": 0.5,
+          "res": false,
+          "scheduler": null,
+          "topk_num_pool_layers": 2,
+          "topk_pool_readout": "mean",
+          "train_eps_gin": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "gmt_blocks": 2,
+          "gmt_heads": 8,
+          "gmt_k": 16,
+          "gmt_layer_norm": false,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 5,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "res": true,
+          "scheduler": null,
+          "train_eps_gin": true,
+          "weight_decay": 0.0
+        }
+      },
+      "HMN": {
+        "source": "recorded",
+        "params": {
+          "hymn_batch_norm": true,
+          "hymn_conv_multiplier": 2,
+          "hymn_dropout": 0.1,
+          "hymn_hidden_size": 64,
+          "hymn_inject_colours": false,
+          "hymn_num_layers": 4,
+          "hymn_pooling": "sum",
+          "hymn_predictor_profile": "medium",
+          "hymn_residual": false,
+          "hymn_samples_colours": "2x4",
+          "lr": 0.001,
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.0,
+          "gnnak_embs_profile": "0,1,2|add",
+          "gnnak_hidden": 128,
+          "gnnak_hops_dim": 8,
+          "gnnak_mini_layers": 2,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 3,
+          "gnnak_pool": "max",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s3_b2",
+          "gnnak_subgraph_pattern": "ego2",
+          "gnnak_virtual_node": true,
+          "lr": 0.003,
+          "scheduler": null,
+          "weight_decay": 0.0001
+        }
+      },
+      "ECS": {
+        "source": "recorded",
+        "params": {
+          "ecs_dropout": 0.0,
+          "ecs_h": 3,
+          "ecs_max_nodes_per_hop": 30,
+          "ecs_pooling": "max",
+          "ecs_residual": false,
+          "ecs_self_loop": true,
+          "ecs_use_rd": false,
+          "ecs_virtual_node": true,
+          "ecs_width_layers": "256x3",
+          "lr": 0.0005,
+          "scheduler": null,
+          "weight_decay": 0.0001
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0005,
+          "mos_act": "relu",
+          "mos_backbone": "gin",
+          "mos_dropout": 0.2,
+          "mos_gsl_epsilon": 0.5,
+          "mos_gsl_lambda": 0.5,
+          "mos_gsl_one_by_one": false,
+          "mos_hidden": 256,
+          "mos_layers": 3,
+          "mos_max_n_sub": 1,
+          "mos_max_sub_size": 5,
+          "mos_metric_heads_hidden256": 16,
+          "mos_metric_weighted": true,
+          "mos_motif_k1": 0.4,
+          "mos_motif_loss_weight": 0.1,
+          "mos_motif_per_class": 2,
+          "mos_motif_sim_type": "euclidean_2",
+          "mos_motif_tau": 0.9,
+          "mos_motif_temperature": 0.7,
+          "mos_motif_update_each": 5,
+          "mos_motif_update_min_epoch_e500": 5,
+          "mos_norm": "none",
+          "mos_output_layers": 1,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "max",
+          "mos_pretrain_backbone_only": true,
+          "mos_pretrain_epochs_max200": 50,
+          "mos_use_motif_tu": true,
+          "mos_use_select": false,
+          "mos_use_separate_encoder": true,
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "HGP": {
+        "source": "recorded",
+        "params": {
+          "hgpsl_dropout": 0.2,
+          "hgpsl_hidden_size": 256,
+          "hgpsl_pooling_ratio": 0.8,
+          "hgpsl_structure_profile": "sample_no_sl",
+          "lr": 0.0005,
+          "scheduler": "ReduceLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "VIB": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.003,
+          "scheduler": null,
+          "vibgsl_backbone": "GAT",
+          "vibgsl_beta": 0.0001,
+          "vibgsl_dropout": 0.0,
+          "vibgsl_feature_denoise": false,
+          "vibgsl_graph_include_self": false,
+          "vibgsl_graph_profile": "eps_attention_e03",
+          "vibgsl_graph_skip_conn": 0.0,
+          "vibgsl_num_per": 8,
+          "vibgsl_repar": false,
+          "vibgsl_width_profile": "64x32x16",
+          "weight_decay": 1e-05
+        }
+      },
+      "RGC": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "rgc_aux_weight": 0.1,
+          "rgc_backbone": "sage",
+          "rgc_drop_profile": "0.0x0.0",
+          "rgc_num_layers": 2,
+          "rgc_pooling": "mean",
+          "rgc_temperature": 0.2,
+          "rgc_width_profile": "256x64x64x32",
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "MVG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.003,
+          "mvgrl_alpha": 0.2,
+          "mvgrl_dropout": 0.0,
+          "mvgrl_width_layers": "128x3",
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.2,
+          "gca_drop_scheme": "evc",
+          "gca_edge_drop_pair": "0.10,0.30",
+          "gca_feature_drop_pair": "0.00,0.10",
+          "gca_p_tau": 0.5,
+          "gca_pretrain_epochs_choice": 50,
+          "gca_pretrain_lr": 0.003,
+          "gca_pretrain_weight_decay": 0.0,
+          "gca_temperature": 0.5,
+          "lr": 0.003,
+          "n_layer_basicgnn": 2,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": false,
+          "use_ffn": false,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      }
+    },
+    "PROTEINS": {
+      "GCN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.2,
+          "lr": 0.003,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "none",
+          "readout_type": "sum",
+          "res": false,
+          "scheduler": "CosRestart",
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "GCNPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.0,
+          "lr": 0.003,
+          "n_layer_basicgnn": 5,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "readout_type": "mean",
+          "res": false,
+          "scheduler": "ReduceLR",
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "GIN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "lr": 0.003,
+          "n_layer_basicgnn": 10,
+          "nhid": 128,
+          "norm_type": "none",
+          "readout_type": "mean",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.1,
+          "lr": 0.003,
+          "n_layer_basicgnn": 5,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": false,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": true,
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "SAGE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "aggr_sage": "mean",
+          "dropout": 0.0,
+          "lr": 0.003,
+          "n_layer_basicgnn": 5,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": false,
+          "scheduler": "CosRestart",
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "SAGEPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "aggr_sage": "mean",
+          "dropout": 0.0,
+          "ffn_expansion": 2,
+          "lr": 0.003,
+          "n_layer_basicgnn": 2,
+          "nhid": 128,
+          "norm_type": "none",
+          "readout_type": "sum",
+          "res": true,
+          "rwpe_dim": 20,
+          "scheduler": null,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "divide_input_pna": false,
+          "dropout": 0.1,
+          "lr": 0.003,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "post_layers_pna": 1,
+          "pre_layers_pna": 2,
+          "readout_type": "sum",
+          "res": false,
+          "rwpe_dim": 20,
+          "scheduler": "CosRestart",
+          "towers_pna": 2,
+          "use_ffn": false,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "attn_dropout": 0.0,
+          "dropout": 0.0,
+          "global_model_type": "Performer",
+          "head_layers": 3,
+          "hidden_size": 256,
+          "local_gnn_type": "GINE",
+          "lr": 0.003,
+          "norm_type": "none",
+          "num_heads": 2,
+          "num_layers": 3,
+          "pe_mode": "rwse",
+          "readout_type": "mean",
+          "rwpe_dim": 32,
+          "scheduler": null,
+          "weight_decay": 0.0001
+        }
+      },
+      "HGT": {
+        "source": "recorded",
+        "params": {
+          "hubgt_attn_dropout": 0.1,
+          "hubgt_bias_dropout": 0.0,
+          "hubgt_dropout": 0.2,
+          "hubgt_ffn_mult": 2,
+          "hubgt_num_layers": 3,
+          "hubgt_pooling": "sum",
+          "hubgt_width_heads": "128x8",
+          "lr": 0.003,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "NAG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.003,
+          "nag_attn_dropout": 0.05,
+          "nag_dropout": 0.3,
+          "nag_ffn_mult": 4,
+          "nag_hops": 5,
+          "nag_num_layers": 2,
+          "nag_pooling": "sum",
+          "nag_width_heads": "256x4",
+          "scheduler": null,
+          "weight_decay": 1e-05
+        }
+      },
+      "EdgePool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "edgepool_dropout": 0.0,
+          "edgepool_num_pool_layers": 1,
+          "edgepool_pool_readout": "mean_max",
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "TopkPool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.2,
+          "lr": 0.003,
+          "n_layer_basicgnn": 5,
+          "nhid": 256,
+          "norm_type": "none",
+          "pool_ratio": 0.9,
+          "res": true,
+          "scheduler": null,
+          "topk_num_pool_layers": 2,
+          "topk_pool_readout": "mean",
+          "train_eps_gin": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.1,
+          "gmt_blocks": 2,
+          "gmt_heads": 4,
+          "gmt_k": 4,
+          "gmt_layer_norm": false,
+          "lr": 0.003,
+          "n_layer_basicgnn": 5,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "res": false,
+          "scheduler": "CosRestart",
+          "train_eps_gin": false,
+          "weight_decay": 0.0
+        }
+      },
+      "HMN": {
+        "source": "recorded",
+        "params": {
+          "hymn_batch_norm": false,
+          "hymn_conv_multiplier": 2,
+          "hymn_dropout": 0.0,
+          "hymn_hidden_size": 256,
+          "hymn_inject_colours": false,
+          "hymn_num_layers": 3,
+          "hymn_pooling": "max",
+          "hymn_predictor_profile": "small",
+          "hymn_residual": true,
+          "hymn_samples_colours": "1x2",
+          "lr": 0.0005,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.0,
+          "gnnak_embs_profile": "0,1,2|add",
+          "gnnak_hidden": 128,
+          "gnnak_hops_dim": 8,
+          "gnnak_mini_layers": 2,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 3,
+          "gnnak_pool": "max",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s3_b2",
+          "gnnak_subgraph_pattern": "ego2",
+          "gnnak_virtual_node": true,
+          "lr": 0.003,
+          "scheduler": null,
+          "weight_decay": 0.0001
+        }
+      },
+      "ECS": {
+        "source": "recorded",
+        "params": {
+          "ecs_dropout": 0.0,
+          "ecs_h": 2,
+          "ecs_max_nodes_per_hop": 20,
+          "ecs_pooling": "sum",
+          "ecs_residual": false,
+          "ecs_self_loop": true,
+          "ecs_use_rd": true,
+          "ecs_virtual_node": true,
+          "ecs_width_layers": "256x3",
+          "lr": 0.003,
+          "scheduler": null,
+          "weight_decay": 0.0001
+        }
+      },
+      "I2GNN": {
+        "source": "recorded",
+        "params": {
+          "i2_dropout": 0.1,
+          "i2_gate_tu": true,
+          "i2_graph_pool_tu": "add",
+          "i2_h": 2,
+          "i2_hidden": 256,
+          "i2_layers": 4,
+          "i2_max_nodes_per_hop": 32,
+          "i2_node_label": "spd",
+          "i2_pool_pair_tu": "mean-context|mean-center-side",
+          "i2_residual_tu": false,
+          "i2_use_pooling_nn_tu": true,
+          "i2_use_rd": true,
+          "lr": 0.003,
+          "scheduler": null,
+          "weight_decay": 1e-05
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0005,
+          "mos_act": "relu",
+          "mos_backbone": "gin",
+          "mos_dropout": 0.2,
+          "mos_gsl_epsilon": 0.5,
+          "mos_gsl_lambda": 0.5,
+          "mos_gsl_one_by_one": false,
+          "mos_hidden": 256,
+          "mos_layers": 3,
+          "mos_max_n_sub": 1,
+          "mos_max_sub_size": 5,
+          "mos_metric_heads_hidden256": 16,
+          "mos_metric_weighted": true,
+          "mos_motif_k1": 0.4,
+          "mos_motif_loss_weight": 0.1,
+          "mos_motif_per_class": 2,
+          "mos_motif_sim_type": "euclidean_2",
+          "mos_motif_tau": 0.9,
+          "mos_motif_temperature": 0.7,
+          "mos_motif_update_each": 5,
+          "mos_motif_update_min_epoch_e500": 5,
+          "mos_norm": "none",
+          "mos_output_layers": 1,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "max",
+          "mos_pretrain_backbone_only": true,
+          "mos_pretrain_epochs_max200": 50,
+          "mos_use_motif_tu": true,
+          "mos_use_select": false,
+          "mos_use_separate_encoder": true,
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "HGP": {
+        "source": "recorded",
+        "params": {
+          "hgpsl_dropout": 0.1,
+          "hgpsl_hidden_size": 64,
+          "hgpsl_lamb": 2.0,
+          "hgpsl_pooling_ratio": 0.8,
+          "hgpsl_structure_profile": "sample_sparse_sl",
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "VIB": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.003,
+          "scheduler": "ReduceLR",
+          "vibgsl_backbone": "GIN",
+          "vibgsl_beta": 1e-05,
+          "vibgsl_dropout": 0.0,
+          "vibgsl_feature_denoise": false,
+          "vibgsl_graph_include_self": false,
+          "vibgsl_graph_profile": "eps_attention_e03",
+          "vibgsl_graph_skip_conn": 0.0,
+          "vibgsl_num_per": 8,
+          "vibgsl_repar": true,
+          "vibgsl_width_profile": "64x32x16",
+          "weight_decay": 0.0001
+        }
+      },
+      "RGC": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "rgc_aux_weight": 0.1,
+          "rgc_backbone": "sage",
+          "rgc_drop_profile": "0.2x0.1",
+          "rgc_num_layers": 2,
+          "rgc_pooling": "mean",
+          "rgc_temperature": 0.2,
+          "rgc_width_profile": "256x64x32x16",
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "MVG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.003,
+          "mvgrl_alpha": 0.2,
+          "mvgrl_dropout": 0.0,
+          "mvgrl_width_layers": "128x3",
+          "scheduler": null,
+          "weight_decay": 1e-05
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "gca_drop_scheme": "evc",
+          "gca_edge_drop_pair": "0.10,0.30",
+          "gca_feature_drop_pair": "0.00,0.10",
+          "gca_p_tau": 0.5,
+          "gca_pretrain_epochs_choice": 0,
+          "gca_pretrain_lr": 0.001,
+          "gca_pretrain_weight_decay": 1e-05,
+          "gca_temperature": 0.1,
+          "lr": 0.003,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": true,
+          "use_ffn": false,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      }
+    },
+    "ENZYMES": {
+      "GCN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.1,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": null,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "GCNPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.2,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "rwpe_dim": 16,
+          "scheduler": "ReduceLR",
+          "use_ffn": false,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "GIN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.1,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 5,
+          "nhid": 128,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": true,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "ffn_expansion": 4,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 5,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": null,
+          "train_eps_gin": true,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "SAGE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "aggr_sage": "mean",
+          "dropout": 0.1,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "mean",
+          "res": false,
+          "scheduler": "ReduceLR",
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "SAGEPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "aggr_sage": "max",
+          "dropout": 0.1,
+          "ffn_expansion": 2,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": false,
+          "rwpe_dim": 32,
+          "scheduler": "CosRestart",
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "divide_input_pna": true,
+          "dropout": 0.0,
+          "lr": 0.003,
+          "n_layer_basicgnn": 5,
+          "nhid": 64,
+          "norm_type": "none",
+          "post_layers_pna": 2,
+          "pre_layers_pna": 2,
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": null,
+          "towers_pna": 1,
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "attn_dropout": 0.1,
+          "dropout": 0.2,
+          "global_model_type": "Performer",
+          "head_layers": 2,
+          "hidden_size": 128,
+          "local_gnn_type": "PNA",
+          "lr": 0.001,
+          "norm_type": "batch_norm",
+          "num_heads": 8,
+          "num_layers": 3,
+          "pe_mode": "none",
+          "readout_type": "mean",
+          "scheduler": null,
+          "weight_decay": 0.0001
+        }
+      },
+      "HGT": {
+        "source": "recorded",
+        "params": {
+          "hubgt_attn_dropout": 0.05,
+          "hubgt_bias_dropout": 0.0,
+          "hubgt_dropout": 0.1,
+          "hubgt_ffn_mult": 2,
+          "hubgt_num_layers": 3,
+          "hubgt_pooling": "sum",
+          "hubgt_width_heads": "128x8",
+          "lr": 0.001,
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "NAG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "nag_attn_dropout": 0.1,
+          "nag_dropout": 0.2,
+          "nag_ffn_mult": 3,
+          "nag_hops": 4,
+          "nag_num_layers": 2,
+          "nag_pooling": "sum",
+          "nag_width_heads": "256x4",
+          "scheduler": "ReduceLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "EdgePool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "edgepool_dropout": 0.0,
+          "edgepool_num_pool_layers": 1,
+          "edgepool_pool_readout": "mean_max",
+          "lr": 0.0005,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": true,
+          "weight_decay": 0.0
+        }
+      },
+      "TopkPool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.0,
+          "lr": 0.003,
+          "n_layer_basicgnn": 5,
+          "nhid": 128,
+          "norm_type": "layer_norm",
+          "pool_ratio": 0.9,
+          "res": true,
+          "scheduler": null,
+          "topk_num_pool_layers": 1,
+          "topk_pool_readout": "mean",
+          "train_eps_gin": true,
+          "weight_decay": 0.0
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "gmt_blocks": 2,
+          "gmt_heads": 8,
+          "gmt_k": 16,
+          "gmt_layer_norm": false,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "HMN": {
+        "source": "recorded",
+        "params": {
+          "hymn_batch_norm": true,
+          "hymn_conv_multiplier": 4,
+          "hymn_dropout": 0.1,
+          "hymn_hidden_size": 64,
+          "hymn_inject_colours": false,
+          "hymn_num_layers": 4,
+          "hymn_pooling": "sum",
+          "hymn_predictor_profile": "medium",
+          "hymn_residual": false,
+          "hymn_samples_colours": "2x4",
+          "lr": 0.001,
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.0,
+          "gnnak_embs_profile": "0,1,2|add",
+          "gnnak_hidden": 256,
+          "gnnak_hops_dim": 8,
+          "gnnak_mini_layers": 2,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 3,
+          "gnnak_pool": "max",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s3_b2",
+          "gnnak_subgraph_pattern": "ego2",
+          "gnnak_virtual_node": true,
+          "lr": 0.003,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "ECS": {
+        "source": "recorded",
+        "params": {
+          "ecs_dropout": 0.1,
+          "ecs_h": 2,
+          "ecs_max_nodes_per_hop": 20,
+          "ecs_pooling": "sum",
+          "ecs_residual": false,
+          "ecs_self_loop": true,
+          "ecs_use_rd": false,
+          "ecs_virtual_node": true,
+          "ecs_width_layers": "128x3",
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "I2GNN": {
+        "source": "recorded",
+        "params": {
+          "i2_dropout": 0.0,
+          "i2_gate_tu": false,
+          "i2_graph_pool_tu": "mean",
+          "i2_h": 2,
+          "i2_hidden": 300,
+          "i2_layers": 4,
+          "i2_max_nodes_per_hop": 16,
+          "i2_node_label": "spd",
+          "i2_pool_pair_tu": "mean|mean",
+          "i2_residual_tu": true,
+          "i2_use_pooling_nn_tu": true,
+          "i2_use_rd": false,
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "mos_act": "gelu",
+          "mos_backbone": "sage",
+          "mos_dropout": 0.0,
+          "mos_gsl_epsilon": 0.9,
+          "mos_gsl_lambda": 0.2,
+          "mos_gsl_one_by_one": false,
+          "mos_hidden": 128,
+          "mos_layers": 4,
+          "mos_max_n_sub": 5,
+          "mos_max_sub_size": 10,
+          "mos_metric_heads_hidden128": 4,
+          "mos_metric_weighted": true,
+          "mos_motif_k1": 1.0,
+          "mos_motif_loss_weight": 0.01,
+          "mos_motif_per_class": 1,
+          "mos_motif_sim_type": "euclidean_1",
+          "mos_motif_tau": 0.99,
+          "mos_motif_temperature": 1.0,
+          "mos_motif_update_each": 20,
+          "mos_motif_update_min_epoch_e500": 20,
+          "mos_norm": "LayerNorm",
+          "mos_output_layers": 2,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "add",
+          "mos_pretrain_backbone_only": false,
+          "mos_pretrain_epochs_max200": 200,
+          "mos_use_motif_tu": true,
+          "mos_use_select": false,
+          "mos_use_separate_encoder": false,
+          "scheduler": "CosRestart",
+          "weight_decay": 1e-05
+        }
+      },
+      "HGP": {
+        "source": "recorded",
+        "params": {
+          "hgpsl_dropout": 0.2,
+          "hgpsl_hidden_size": 256,
+          "hgpsl_pooling_ratio": 0.8,
+          "hgpsl_structure_profile": "sample_no_sl",
+          "lr": 0.0005,
+          "scheduler": "ReduceLR",
+          "weight_decay": 1e-05
+        }
+      },
+      "VIB": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.003,
+          "scheduler": "ReduceLR",
+          "vibgsl_backbone": "GIN",
+          "vibgsl_beta": 1e-05,
+          "vibgsl_dropout": 0.0,
+          "vibgsl_feature_denoise": false,
+          "vibgsl_graph_include_self": false,
+          "vibgsl_graph_profile": "eps_attention_e03",
+          "vibgsl_graph_skip_conn": 0.0,
+          "vibgsl_num_per": 8,
+          "vibgsl_repar": true,
+          "vibgsl_width_profile": "64x32x16",
+          "weight_decay": 0.0001
+        }
+      },
+      "RGC": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "rgc_aux_weight": 0.1,
+          "rgc_backbone": "sage",
+          "rgc_drop_profile": "0.3x0.2",
+          "rgc_num_layers": 2,
+          "rgc_pooling": "mean",
+          "rgc_temperature": 0.2,
+          "rgc_width_profile": "256x64x64x32",
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "MVG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.003,
+          "mvgrl_alpha": 0.3,
+          "mvgrl_dropout": 0.0,
+          "mvgrl_width_layers": "128x3",
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "gca_drop_scheme": "evc",
+          "gca_edge_drop_pair": "0.10,0.30",
+          "gca_feature_drop_pair": "0.00,0.10",
+          "gca_p_tau": 0.5,
+          "gca_pretrain_epochs_choice": 0,
+          "gca_pretrain_lr": 0.001,
+          "gca_pretrain_weight_decay": 1e-05,
+          "gca_temperature": 0.1,
+          "lr": 0.003,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": true,
+          "use_ffn": false,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      }
+    },
+    "MUTAG": {
+      "GCN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.0,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 128,
+          "norm_type": "none",
+          "readout_type": "sum",
+          "res": false,
+          "scheduler": "CosRestart",
+          "use_virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "GCNPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.0,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "none",
+          "readout_type": "sum",
+          "res": false,
+          "scheduler": "CosRestart",
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 0.0
+        }
+      },
+      "GIN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.2,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "none",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": null,
+          "train_eps_gin": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.0,
+          "ffn_expansion": 4,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 128,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "rwpe_dim": 32,
+          "scheduler": null,
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": false,
+          "weight_decay": 0.0001
+        }
+      },
+      "SAGE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "aggr_sage": "mean",
+          "dropout": 0.1,
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "readout_type": "mean",
+          "res": false,
+          "scheduler": null,
+          "use_virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "SAGEPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "aggr_sage": "mean",
+          "dropout": 0.0,
+          "lr": 0.003,
+          "n_layer_basicgnn": 2,
+          "nhid": 64,
+          "norm_type": "none",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": null,
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "divide_input_pna": true,
+          "dropout": 0.0,
+          "lr": 0.003,
+          "n_layer_basicgnn": 5,
+          "nhid": 64,
+          "norm_type": "none",
+          "post_layers_pna": 2,
+          "pre_layers_pna": 2,
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": null,
+          "towers_pna": 1,
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "attn_dropout": 0.0,
+          "dropout": 0.0,
+          "global_model_type": "Performer",
+          "head_layers": 3,
+          "hidden_size": 256,
+          "local_gnn_type": "GINE",
+          "lr": 0.003,
+          "norm_type": "none",
+          "num_heads": 2,
+          "num_layers": 3,
+          "pe_mode": "rwse",
+          "readout_type": "mean",
+          "rwpe_dim": 32,
+          "scheduler": null,
+          "weight_decay": 0.0001
+        }
+      },
+      "HGT": {
+        "source": "recorded",
+        "params": {
+          "hubgt_attn_dropout": 0.05,
+          "hubgt_bias_dropout": 0.0,
+          "hubgt_dropout": 0.1,
+          "hubgt_ffn_mult": 2,
+          "hubgt_num_layers": 3,
+          "hubgt_pooling": "sum",
+          "hubgt_width_heads": "128x8",
+          "lr": 0.001,
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "NAG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "nag_attn_dropout": 0.1,
+          "nag_dropout": 0.1,
+          "nag_ffn_mult": 4,
+          "nag_hops": 3,
+          "nag_num_layers": 2,
+          "nag_pooling": "sum",
+          "nag_width_heads": "256x4",
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "EdgePool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "edgepool_dropout": 0.0,
+          "edgepool_num_pool_layers": 1,
+          "edgepool_pool_readout": "mean_max",
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "TopkPool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.0,
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "pool_ratio": 0.8,
+          "res": true,
+          "scheduler": "CosRestart",
+          "topk_num_pool_layers": 2,
+          "topk_pool_readout": "mean",
+          "train_eps_gin": false,
+          "weight_decay": 0.0
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.1,
+          "gmt_blocks": 1,
+          "gmt_heads": 2,
+          "gmt_k": 16,
+          "gmt_layer_norm": false,
+          "lr": 0.001,
+          "n_layer_basicgnn": 5,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "res": false,
+          "scheduler": null,
+          "train_eps_gin": false,
+          "weight_decay": 0.0001
+        }
+      },
+      "HMN": {
+        "source": "recorded",
+        "params": {
+          "hymn_batch_norm": true,
+          "hymn_conv_multiplier": 2,
+          "hymn_dropout": 0.1,
+          "hymn_hidden_size": 64,
+          "hymn_inject_colours": false,
+          "hymn_num_layers": 4,
+          "hymn_pooling": "sum",
+          "hymn_predictor_profile": "medium",
+          "hymn_residual": false,
+          "hymn_samples_colours": "2x4",
+          "lr": 0.001,
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.0,
+          "gnnak_embs_profile": "0,2|add",
+          "gnnak_hidden": 128,
+          "gnnak_hops_dim": 8,
+          "gnnak_mini_layers": 2,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 3,
+          "gnnak_pool": "max",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s3_b2",
+          "gnnak_subgraph_pattern": "ego1",
+          "gnnak_virtual_node": true,
+          "lr": 0.0005,
+          "scheduler": null,
+          "weight_decay": 0.0001
+        }
+      },
+      "ECS": {
+        "source": "recorded",
+        "params": {
+          "ecs_dropout": 0.2,
+          "ecs_h": 2,
+          "ecs_max_nodes_per_hop": 20,
+          "ecs_pooling": "mean",
+          "ecs_residual": true,
+          "ecs_self_loop": false,
+          "ecs_use_rd": false,
+          "ecs_virtual_node": true,
+          "ecs_width_layers": "256x5",
+          "lr": 0.001,
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0
+        }
+      },
+      "I2GNN": {
+        "source": "recorded",
+        "params": {
+          "i2_dropout": 0.0,
+          "i2_gate_tu": false,
+          "i2_graph_pool_tu": "max",
+          "i2_h": 3,
+          "i2_hidden": 300,
+          "i2_layers": 6,
+          "i2_max_nodes_per_hop": 16,
+          "i2_node_label": "drnl",
+          "i2_pool_pair_tu": "add|center",
+          "i2_residual_tu": true,
+          "i2_use_pooling_nn_tu": false,
+          "i2_use_rd": false,
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0005,
+          "mos_act": "relu",
+          "mos_backbone": "sage",
+          "mos_dropout": 0.0,
+          "mos_gsl_epsilon": 0.9,
+          "mos_gsl_lambda": 0.2,
+          "mos_gsl_one_by_one": false,
+          "mos_hidden": 128,
+          "mos_layers": 3,
+          "mos_max_n_sub": 1,
+          "mos_max_sub_size": 5,
+          "mos_metric_heads_hidden128": 4,
+          "mos_metric_weighted": true,
+          "mos_motif_k1": 0.4,
+          "mos_motif_loss_weight": 0.01,
+          "mos_motif_per_class": 1,
+          "mos_motif_sim_type": "euclidean_1",
+          "mos_motif_tau": 0.99,
+          "mos_motif_temperature": 0.7,
+          "mos_motif_update_each": 5,
+          "mos_motif_update_min_epoch_e500": 20,
+          "mos_norm": "none",
+          "mos_output_layers": 1,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "add",
+          "mos_pretrain_backbone_only": true,
+          "mos_pretrain_epochs_max200": 50,
+          "mos_use_motif_tu": true,
+          "mos_use_select": false,
+          "mos_use_separate_encoder": false,
+          "scheduler": null,
+          "weight_decay": 1e-05
+        }
+      },
+      "HGP": {
+        "source": "recorded",
+        "params": {
+          "hgpsl_dropout": 0.0,
+          "hgpsl_hidden_size": 64,
+          "hgpsl_lamb": 0.1,
+          "hgpsl_pooling_ratio": 0.5,
+          "hgpsl_structure_profile": "dense_softmax_sl",
+          "lr": 0.003,
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "VIB": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.003,
+          "scheduler": "CosRestart",
+          "vibgsl_backbone": "GIN",
+          "vibgsl_beta": 1e-05,
+          "vibgsl_dropout": 0.3,
+          "vibgsl_feature_denoise": false,
+          "vibgsl_graph_profile": "eps_attention_e03",
+          "vibgsl_graph_skip_conn": 0.5,
+          "vibgsl_num_per": 4,
+          "vibgsl_repar": true,
+          "vibgsl_width_profile": "64x32x16",
+          "weight_decay": 0.0
+        }
+      },
+      "RGC": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "rgc_aux_weight": 0.1,
+          "rgc_backbone": "sage",
+          "rgc_drop_profile": "0.0x0.0",
+          "rgc_num_layers": 2,
+          "rgc_pooling": "mean",
+          "rgc_temperature": 0.2,
+          "rgc_width_profile": "256x64x64x32",
+          "scheduler": null,
+          "weight_decay": 0.0
+        }
+      },
+      "MVG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "mvgrl_alpha": 0.2,
+          "mvgrl_dropout": 0.2,
+          "mvgrl_width_layers": "256x2",
+          "scheduler": null,
+          "weight_decay": 1e-05
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.1,
+          "ffn_expansion": 1,
+          "gca_drop_scheme": "pr",
+          "gca_edge_drop_pair": "0.30,0.40",
+          "gca_feature_drop_pair": "0.10,0.30",
+          "gca_p_tau": 0.7,
+          "gca_pretrain_epochs_choice": 0,
+          "gca_pretrain_lr": 0.0005,
+          "gca_pretrain_weight_decay": 0.0001,
+          "gca_temperature": 1.0,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": null,
+          "train_eps_gin": true,
+          "use_ffn": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      }
+    },
+    "DD": {
+      "GCN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.0,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "GCNPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.0,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 64,
+          "norm_type": "none",
+          "readout_type": "sum",
+          "res": false,
+          "scheduler": "CosRestart",
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 0.0
+        }
+      },
+      "GIN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 128,
+          "norm_type": "none",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": false,
+          "use_virtual_node": true,
+          "weight_decay": 0.0
+        }
+      },
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.0,
+          "ffn_expansion": 2,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": false,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "SAGE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "aggr_sage": "max",
+          "dropout": 0.1,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": false,
+          "scheduler": null,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "SAGEPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "aggr_sage": "sum",
+          "dropout": 0.1,
+          "lr": 0.003,
+          "n_layer_basicgnn": 2,
+          "nhid": 128,
+          "norm_type": "layer_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "divide_input_pna": true,
+          "dropout": 0.2,
+          "ffn_expansion": 2,
+          "lr": 0.001,
+          "n_layer_basicgnn": 4,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "post_layers_pna": 2,
+          "pre_layers_pna": 2,
+          "readout_type": "sum",
+          "res": true,
+          "rwpe_dim": 20,
+          "scheduler": "ReduceLR",
+          "towers_pna": 2,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "EdgePool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.2,
+          "edgepool_dropout": 0.2,
+          "edgepool_num_pool_layers": 3,
+          "edgepool_pool_readout": "mean",
+          "lr": 0.001,
+          "n_layer_basicgnn": 4,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "TopkPool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.0,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "pool_ratio": 0.9,
+          "res": false,
+          "scheduler": "CosRestart",
+          "topk_num_pool_layers": 2,
+          "topk_pool_readout": "mean_max",
+          "train_eps_gin": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.1,
+          "gmt_blocks": 1,
+          "gmt_heads": 8,
+          "gmt_k": 16,
+          "gmt_layer_norm": false,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "res": true,
+          "scheduler": null,
+          "train_eps_gin": false,
+          "weight_decay": 0.0
+        }
+      },
+      "HMN": {
+        "source": "recorded",
+        "params": {
+          "hymn_batch_norm": true,
+          "hymn_conv_multiplier": 4,
+          "hymn_dropout": 0.2,
+          "hymn_hidden_size": 128,
+          "hymn_inject_colours": false,
+          "hymn_num_layers": 4,
+          "hymn_pooling": "sum",
+          "hymn_predictor_profile": "medium",
+          "hymn_residual": true,
+          "hymn_samples_colours": "3x2",
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "AK": {
+        "source": "recorded",
+        "params": {
+          "gnnak_dropout": 0.1,
+          "gnnak_embs_profile": "0,1,2|add",
+          "gnnak_hidden": 128,
+          "gnnak_hops_dim": 8,
+          "gnnak_mini_layers": 3,
+          "gnnak_mlp_layers": 1,
+          "gnnak_outer_layers": 4,
+          "gnnak_pool": "mean",
+          "gnnak_residual": true,
+          "gnnak_sampling_profile": "shortest_r2_s3_b2",
+          "gnnak_subgraph_pattern": "ego1",
+          "gnnak_virtual_node": true,
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "ECS": {
+        "source": "recorded",
+        "params": {
+          "ecs_dropout": 0.2,
+          "ecs_h": 3,
+          "ecs_max_nodes_per_hop": 30,
+          "ecs_pooling": "sum",
+          "ecs_residual": true,
+          "ecs_self_loop": true,
+          "ecs_use_rd": true,
+          "ecs_virtual_node": true,
+          "ecs_width_layers": "128x4",
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "I2GNN": {
+        "source": "recorded",
+        "params": {
+          "i2_dropout": 0.1,
+          "i2_gate_tu": true,
+          "i2_graph_pool_tu": "sum",
+          "i2_h": 2,
+          "i2_hidden": 128,
+          "i2_layers": 4,
+          "i2_max_nodes_per_hop": 16,
+          "i2_node_label": "drnl",
+          "i2_pool_pair_tu": "mean|mean",
+          "i2_residual_tu": true,
+          "i2_use_pooling_nn_tu": true,
+          "i2_use_rd": false,
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        },
+        "train": {
+          "batch_size": 8
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "mos_act": "gelu",
+          "mos_backbone": "gin",
+          "mos_dropout": 0.2,
+          "mos_gsl_epsilon": 0.7,
+          "mos_gsl_lambda": 0.5,
+          "mos_gsl_one_by_one": true,
+          "mos_hidden": 128,
+          "mos_layers": 3,
+          "mos_max_n_sub": 2,
+          "mos_max_sub_size": 8,
+          "mos_metric_heads_hidden128": 8,
+          "mos_metric_weighted": true,
+          "mos_motif_k1": 0.8,
+          "mos_motif_loss_weight": 0.1,
+          "mos_motif_per_class": 2,
+          "mos_motif_sim_type": "euclidean_1",
+          "mos_motif_tau": 0.9,
+          "mos_motif_temperature": 0.7,
+          "mos_motif_update_each": 10,
+          "mos_motif_update_min_epoch_e500": 20,
+          "mos_norm": "LayerNorm",
+          "mos_output_layers": 3,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "mean",
+          "mos_pretrain_backbone_only": 0,
+          "mos_pretrain_epochs_max200": 50,
+          "mos_select_estimator": "mlp",
+          "mos_select_topk": 0.8,
+          "mos_use_motif_tu": true,
+          "mos_use_select": true,
+          "mos_use_separate_encoder": true,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "HGP": {
+        "source": "recorded",
+        "params": {
+          "hgpsl_dropout": 0.2,
+          "hgpsl_hidden_size": 128,
+          "hgpsl_lamb": 1.0,
+          "hgpsl_pooling_ratio": 0.5,
+          "hgpsl_structure_profile": "sample_softmax_sl",
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "VIB": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "vibgsl_backbone": "GIN",
+          "vibgsl_beta": 0.0001,
+          "vibgsl_dropout": 0.3,
+          "vibgsl_feature_denoise": false,
+          "vibgsl_graph_profile": "knn_attention_k10",
+          "vibgsl_graph_skip_conn": 0.1,
+          "vibgsl_num_per": 8,
+          "vibgsl_repar": true,
+          "vibgsl_width_profile": "64x32x16",
+          "weight_decay": 0.0001
+        }
+      },
+      "RGC": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "rgc_aux_weight": 0.05,
+          "rgc_backbone": "sage",
+          "rgc_drop_profile": "0.2x0.1",
+          "rgc_num_layers": 4,
+          "rgc_pooling": "sum",
+          "rgc_temperature": 0.2,
+          "rgc_width_profile": "256x64x32x16",
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "MVG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "mvgrl_alpha": 0.2,
+          "mvgrl_dropout": 0.2,
+          "mvgrl_width_layers": "128x2",
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.2,
+          "ffn_expansion": 2,
+          "gca_drop_scheme": "pr",
+          "gca_edge_drop_pair": "0.10,0.30",
+          "gca_feature_drop_pair": "0.10,0.30",
+          "gca_p_tau": 0.7,
+          "gca_pretrain_epochs_choice": 50,
+          "gca_pretrain_lr": 0.001,
+          "gca_pretrain_weight_decay": 0.0001,
+          "gca_temperature": 0.5,
+          "lr": 0.001,
+          "n_layer_basicgnn": 4,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": true,
+          "use_ffn": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      }
+    },
+    "COLLAB": {
+      "GCN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "layer_norm",
+          "readout_type": "mean",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "use_virtual_node": true,
+          "weight_decay": 0.0
+        }
+      },
+      "GCNPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.2,
+          "ffn_expansion": 4,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": null,
+          "use_ffn": true,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "GIN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.2,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "readout_type": "mean",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": false,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.0,
+          "ffn_expansion": 2,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": false,
+          "rwpe_dim": 32,
+          "scheduler": "CosRestart",
+          "train_eps_gin": true,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0
+        }
+      },
+      "SAGE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "aggr_sage": "mean",
+          "dropout": 0.1,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "readout_type": "mean",
+          "res": false,
+          "scheduler": "ReduceLR",
+          "use_virtual_node": true,
+          "weight_decay": 0.0
+        }
+      },
+      "SAGEPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "aggr_sage": "mean",
+          "dropout": 0.0,
+          "lr": 0.003,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "none",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": null,
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "divide_input_pna": true,
+          "dropout": 0.2,
+          "ffn_expansion": 2,
+          "lr": 0.001,
+          "n_layer_basicgnn": 4,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "post_layers_pna": 2,
+          "pre_layers_pna": 2,
+          "readout_type": "sum",
+          "res": true,
+          "rwpe_dim": 20,
+          "scheduler": "ReduceLR",
+          "towers_pna": 2,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "GraphGPS": {
+        "source": "recorded",
+        "params": {
+          "act_type": "gelu",
+          "attn_dropout": 0.1,
+          "dropout": 0.2,
+          "global_model_type": "Transformer",
+          "head_layers": 3,
+          "hidden_size": 128,
+          "local_gnn_type": "GINE",
+          "lr": 0.001,
+          "norm_type": "batch_norm",
+          "num_heads": 4,
+          "num_layers": 3,
+          "pe_mode": "rwse",
+          "readout_type": "mean",
+          "rwpe_dim": 20,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "HGT": {
+        "source": "recorded",
+        "params": {
+          "hubgt_attn_dropout": 0.05,
+          "hubgt_bias_dropout": 0.0,
+          "hubgt_dropout": 0.0,
+          "hubgt_ffn_mult": 3,
+          "hubgt_num_layers": 4,
+          "hubgt_pooling": "sum",
+          "hubgt_width_heads": "128x8",
+          "lr": 0.001,
+          "scheduler": "CosRestart",
+          "weight_decay": 1e-05
+        }
+      },
+      "NAG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.0005,
+          "nag_attn_dropout": 0.2,
+          "nag_dropout": 0.2,
+          "nag_ffn_mult": 4,
+          "nag_hops": 4,
+          "nag_num_layers": 2,
+          "nag_pooling": "mean",
+          "nag_width_heads": "256x4",
+          "scheduler": "CosRestart",
+          "weight_decay": 0.0
+        }
+      },
+      "TopkPool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.0,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "pool_ratio": 0.9,
+          "res": false,
+          "scheduler": "CosRestart",
+          "topk_num_pool_layers": 2,
+          "topk_pool_readout": "mean",
+          "train_eps_gin": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.0,
+          "gmt_blocks": 1,
+          "gmt_heads": 4,
+          "gmt_k": 4,
+          "gmt_layer_norm": false,
+          "lr": 0.001,
+          "n_layer_basicgnn": 5,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "res": false,
+          "scheduler": "CosRestart",
+          "train_eps_gin": false,
+          "weight_decay": 0.0
+        }
+      },
+      "HMN": {
+        "source": "recorded",
+        "params": {
+          "hymn_batch_norm": true,
+          "hymn_conv_multiplier": 4,
+          "hymn_dropout": 0.2,
+          "hymn_hidden_size": 128,
+          "hymn_inject_colours": false,
+          "hymn_num_layers": 4,
+          "hymn_pooling": "sum",
+          "hymn_predictor_profile": "medium",
+          "hymn_residual": true,
+          "hymn_samples_colours": "3x2",
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "mos_act": "gelu",
+          "mos_backbone": "gin",
+          "mos_dropout": 0.2,
+          "mos_gsl_epsilon": 0.7,
+          "mos_gsl_lambda": 0.5,
+          "mos_gsl_one_by_one": true,
+          "mos_hidden": 128,
+          "mos_layers": 3,
+          "mos_max_n_sub": 2,
+          "mos_max_sub_size": 8,
+          "mos_metric_heads_hidden128": 8,
+          "mos_metric_weighted": true,
+          "mos_motif_k1": 0.8,
+          "mos_motif_loss_weight": 0.1,
+          "mos_motif_per_class": 2,
+          "mos_motif_sim_type": "euclidean_1",
+          "mos_motif_tau": 0.9,
+          "mos_motif_temperature": 0.7,
+          "mos_motif_update_each": 10,
+          "mos_motif_update_min_epoch_e500": 20,
+          "mos_norm": "LayerNorm",
+          "mos_output_layers": 3,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "mean",
+          "mos_pretrain_backbone_only": 0,
+          "mos_pretrain_epochs_max200": 50,
+          "mos_select_estimator": "mlp",
+          "mos_select_topk": 0.8,
+          "mos_use_motif_tu": true,
+          "mos_use_select": true,
+          "mos_use_separate_encoder": true,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "HGP": {
+        "source": "recorded",
+        "params": {
+          "hgpsl_dropout": 0.2,
+          "hgpsl_hidden_size": 128,
+          "hgpsl_lamb": 1.0,
+          "hgpsl_pooling_ratio": 0.5,
+          "hgpsl_structure_profile": "sample_softmax_sl",
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "VIB": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "vibgsl_backbone": "GIN",
+          "vibgsl_beta": 0.0001,
+          "vibgsl_dropout": 0.3,
+          "vibgsl_feature_denoise": false,
+          "vibgsl_graph_profile": "knn_attention_k10",
+          "vibgsl_graph_skip_conn": 0.1,
+          "vibgsl_num_per": 8,
+          "vibgsl_repar": true,
+          "vibgsl_width_profile": "64x32x16",
+          "weight_decay": 0.0001
+        }
+      },
+      "RGC": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "rgc_aux_weight": 0.05,
+          "rgc_backbone": "sage",
+          "rgc_drop_profile": "0.2x0.1",
+          "rgc_num_layers": 4,
+          "rgc_pooling": "sum",
+          "rgc_temperature": 0.2,
+          "rgc_width_profile": "256x64x32x16",
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "MVG": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "mvgrl_alpha": 0.2,
+          "mvgrl_dropout": 0.2,
+          "mvgrl_width_layers": "128x2",
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.2,
+          "ffn_expansion": 2,
+          "gca_drop_scheme": "pr",
+          "gca_edge_drop_pair": "0.10,0.30",
+          "gca_feature_drop_pair": "0.10,0.30",
+          "gca_p_tau": 0.7,
+          "gca_pretrain_epochs_choice": 50,
+          "gca_pretrain_lr": 0.001,
+          "gca_pretrain_weight_decay": 0.0001,
+          "gca_temperature": 0.5,
+          "lr": 0.001,
+          "n_layer_basicgnn": 4,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": true,
+          "use_ffn": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      }
+    },
+    "REDDIT-BINARY": {
+      "GCN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.0,
+          "lr": 0.003,
+          "n_layer_basicgnn": 5,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": false,
+          "scheduler": null,
+          "use_virtual_node": false,
+          "weight_decay": 1e-05
+        }
+      },
+      "GCNPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "swish",
+          "dropout": 0.1,
+          "lr": 0.003,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "none",
+          "readout_type": "sum",
+          "res": false,
+          "rwpe_dim": 32,
+          "scheduler": "ReduceLR",
+          "use_ffn": false,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 1e-05
+        }
+      },
+      "GIN": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.0,
+          "lr": 0.003,
+          "n_layer_basicgnn": 10,
+          "nhid": 128,
+          "norm_type": "layer_norm",
+          "readout_type": "mean",
+          "res": false,
+          "scheduler": null,
+          "train_eps_gin": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.0001
+        }
+      },
+      "GINE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 256,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": false,
+          "scheduler": "CosRestart",
+          "train_eps_gin": false,
+          "use_ffn": false,
+          "use_rwpe": false,
+          "use_virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "SAGE": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "aggr_sage": "mean",
+          "dropout": 0.1,
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "readout_type": "mean",
+          "res": false,
+          "scheduler": null,
+          "use_virtual_node": false,
+          "weight_decay": 0.0
+        }
+      },
+      "SAGEPlus": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "aggr_sage": "sum",
+          "dropout": 0.0,
+          "ffn_expansion": 2,
+          "lr": 0.001,
+          "n_layer_basicgnn": 10,
+          "nhid": 128,
+          "norm_type": "batch_norm",
+          "readout_type": "mean",
+          "res": false,
+          "rwpe_dim": 20,
+          "scheduler": "CosRestart",
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "PNA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "divide_input_pna": true,
+          "dropout": 0.2,
+          "ffn_expansion": 2,
+          "lr": 0.001,
+          "n_layer_basicgnn": 3,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "post_layers_pna": 2,
+          "pre_layers_pna": 2,
+          "readout_type": "sum",
+          "res": true,
+          "rwpe_dim": 20,
+          "scheduler": "ReduceLR",
+          "towers_pna": 2,
+          "use_ffn": true,
+          "use_rwpe": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "EdgePool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.2,
+          "edgepool_dropout": 0.2,
+          "edgepool_num_pool_layers": 3,
+          "edgepool_pool_readout": "mean",
+          "lr": 0.001,
+          "n_layer_basicgnn": 3,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "TopkPool": {
+        "source": "recorded",
+        "params": {
+          "act_type": "relu",
+          "dropout": 0.1,
+          "lr": 0.0005,
+          "n_layer_basicgnn": 10,
+          "nhid": 128,
+          "norm_type": "layer_norm",
+          "pool_ratio": 0.9,
+          "res": false,
+          "scheduler": "ReduceLR",
+          "topk_num_pool_layers": 1,
+          "topk_pool_readout": "mean",
+          "train_eps_gin": true,
+          "weight_decay": 0.0
+        }
+      },
+      "GMT": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.0,
+          "gmt_blocks": 2,
+          "gmt_heads": 2,
+          "gmt_k": 4,
+          "gmt_layer_norm": false,
+          "lr": 0.001,
+          "n_layer_basicgnn": 2,
+          "nhid": 64,
+          "norm_type": "layer_norm",
+          "res": true,
+          "scheduler": "CosRestart",
+          "train_eps_gin": true,
+          "weight_decay": 0.0001
+        }
+      },
+      "HMN": {
+        "source": "recorded",
+        "params": {
+          "hymn_batch_norm": true,
+          "hymn_conv_multiplier": 4,
+          "hymn_dropout": 0.2,
+          "hymn_hidden_size": 64,
+          "hymn_inject_colours": false,
+          "hymn_num_layers": 3,
+          "hymn_pooling": "sum",
+          "hymn_predictor_profile": "medium",
+          "hymn_residual": true,
+          "hymn_samples_colours": "3x2",
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "MO": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "mos_act": "gelu",
+          "mos_backbone": "gin",
+          "mos_dropout": 0.2,
+          "mos_gsl_epsilon": 0.7,
+          "mos_gsl_lambda": 0.5,
+          "mos_gsl_one_by_one": true,
+          "mos_hidden": 64,
+          "mos_layers": 3,
+          "mos_max_n_sub": 2,
+          "mos_max_sub_size": 8,
+          "mos_metric_heads_hidden64": 8,
+          "mos_metric_weighted": true,
+          "mos_motif_k1": 0.8,
+          "mos_motif_loss_weight": 0.1,
+          "mos_motif_per_class": 2,
+          "mos_motif_sim_type": "euclidean_1",
+          "mos_motif_tau": 0.9,
+          "mos_motif_temperature": 0.7,
+          "mos_motif_update_each": 10,
+          "mos_motif_update_min_epoch_e500": 20,
+          "mos_norm": "LayerNorm",
+          "mos_output_layers": 3,
+          "mos_parsing": "parse_bfs",
+          "mos_pool": "mean",
+          "mos_pretrain_backbone_only": 0,
+          "mos_pretrain_epochs_max200": 50,
+          "mos_select_estimator": "mlp",
+          "mos_select_topk": 0.8,
+          "mos_use_motif_tu": true,
+          "mos_use_select": true,
+          "mos_use_separate_encoder": true,
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "VIB": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "scheduler": "ReduceLR",
+          "vibgsl_backbone": "GIN",
+          "vibgsl_beta": 0.0001,
+          "vibgsl_dropout": 0.3,
+          "vibgsl_feature_denoise": false,
+          "vibgsl_graph_profile": "knn_attention_k10",
+          "vibgsl_graph_skip_conn": 0.1,
+          "vibgsl_num_per": 8,
+          "vibgsl_repar": true,
+          "vibgsl_width_profile": "64x32x16",
+          "weight_decay": 0.0001
+        }
+      },
+      "RGC": {
+        "source": "recorded",
+        "params": {
+          "lr": 0.001,
+          "rgc_aux_weight": 0.05,
+          "rgc_backbone": "sage",
+          "rgc_drop_profile": "0.2x0.1",
+          "rgc_num_layers": 3,
+          "rgc_pooling": "sum",
+          "rgc_temperature": 0.2,
+          "rgc_width_profile": "256x64x32x16",
+          "scheduler": "ReduceLR",
+          "weight_decay": 0.0001
+        }
+      },
+      "GCA": {
+        "source": "recorded",
+        "params": {
+          "act_type": "prelu",
+          "dropout": 0.2,
+          "ffn_expansion": 2,
+          "gca_drop_scheme": "pr",
+          "gca_edge_drop_pair": "0.10,0.30",
+          "gca_feature_drop_pair": "0.10,0.30",
+          "gca_p_tau": 0.7,
+          "gca_pretrain_epochs_choice": 50,
+          "gca_pretrain_lr": 0.001,
+          "gca_pretrain_weight_decay": 0.0001,
+          "gca_temperature": 0.5,
+          "lr": 0.001,
+          "n_layer_basicgnn": 3,
+          "nhid": 64,
+          "norm_type": "batch_norm",
+          "readout_type": "sum",
+          "res": true,
+          "scheduler": "ReduceLR",
+          "train_eps_gin": true,
+          "use_ffn": true,
+          "use_virtual_node": true,
+          "weight_decay": 0.0001
+        }
+      }
+    }
+  }
+}

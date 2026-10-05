@@ -1,0 +1,32 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+--find-links https://data.pyg.org/whl/torch-2.0.1+cu118.html
+
+# Core numerical and graph stack
+numpy==1.26.4
+scipy==1.13.1
+pandas==1.5.3
+scikit-learn==1.5.2
+networkx==3.3
+
+# PyTorch 2.0.1 / CUDA 11.8 and PyG extensions
+torch==2.0.1+cu118
+pyg-lib==0.4.0+pt20cu118
+torch-scatter==2.1.2+pt20cu118
+torch-sparse==0.6.18+pt20cu118
+torch-cluster==1.6.3+pt20cu118
+torch-spline-conv==1.2.2+pt20cu118
+torch-geometric==2.5.3
+
+# Benchmark datasets, tuning, and models
+ogb==1.3.6
+optuna==4.7.0
+lightgbm==4.6.0
+rdkit-pypi==2022.9.5
+performer-pytorch==1.1.4
+sparse-deferred==1.0.0
+yacs==0.1.8
+
+# Utilities
+gdown==5.2.0
+psutil==6.0.0
+tqdm==4.66.4
